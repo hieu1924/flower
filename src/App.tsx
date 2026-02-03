@@ -3,6 +3,9 @@ import { HomePage } from './pages';
 import ShopPage from './pages/ShopPage';
 import './styles/globals.css';
 
+// Get base path for GitHub Pages deployment
+const basename = import.meta.env.BASE_URL;
+
 /**
  * App Component
  * Main application entry point with routing
@@ -11,7 +14,7 @@ import './styles/globals.css';
  */
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
