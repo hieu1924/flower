@@ -105,98 +105,106 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
 
   return (
     <div 
-      className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 ${
-        isHovered ? 'transform -translate-y-3 scale-[1.02]' : ''
-      } ${isOutOfStock ? 'opacity-75' : ''}`}
+      className="group relative bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square overflow-hidden bg-[#F5F1ED]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#fdf6f3] to-[#f5ebe6]">
         <img 
           src={product.image} 
           alt={product.name}
-          className={`w-full h-full object-cover transition-transform duration-500 ${
-            isHovered ? 'scale-110' : 'scale-100'
+          className={`w-full h-full object-cover transition-all duration-700 ${
+            isHovered ? 'scale-105' : 'scale-100'
           }`}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = `https://placehold.co/400x400/F5F1ED/282C2F?text=${encodeURIComponent(product.name)}`;
+            target.src = `https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=500&fit=crop`;
           }}
         />
         
-        {/* Overlay with Quick Actions */}
-        <div className={`absolute inset-0 bg-black/20 transition-opacity duration-300 flex items-center justify-center gap-3 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        
+        {/* Quick Actions - Bottom */}
+        <div className={`absolute bottom-4 left-4 right-4 flex items-center justify-center gap-3 transition-all duration-300 ${
+          isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
-          {/* Quick View */}
           <button
             onClick={() => onQuickView(product)}
-            className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#E85A4F] hover:text-white transition-colors shadow-lg transform hover:scale-110 cursor-pointer"
-            title="Quick View"
+            className="flex-1 py-3 bg-white/95 backdrop-blur-sm rounded-xl flex items-center justify-center gap-2 text-[#282C2F] font-medium hover:bg-white transition-colors shadow-lg cursor-pointer"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
             </svg>
-          </button>
-          
-          {/* Wishlist */}
-          <button
-            onClick={handleWishlist}
-            className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg transform hover:scale-110 cursor-pointer ${
-              isWishlisted ? 'bg-[#E85A4F] text-white' : 'bg-white hover:bg-[#E85A4F] hover:text-white'
-            }`}
-            title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
-          >
-            <svg className="w-5 h-5" fill={isWishlisted ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
+            Xem nhanh
           </button>
         </div>
         
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {product.discount && (
-            <span className="bg-[#E85A4F] text-white text-xs font-bold px-2 py-1 rounded-full">
-              GIẢM {product.discount}%
+        {/* Wishlist Button - Top Right */}
+        <button
+          onClick={handleWishlist}
+          className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer ${
+            isWishlisted 
+              ? 'bg-[#E85A4F] text-white' 
+              : 'bg-white/90 backdrop-blur-sm text-gray-600 hover:bg-[#E85A4F] hover:text-white'
+          }`}
+        >
+          <svg className="w-5 h-5" fill={isWishlisted ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </button>
+        
+        {/* Badges - Top Left */}
+        <div className="absolute top-4 left-4 flex flex-col gap-2">
+          {product.discount && product.discount >= 50 && (
+            <span className="bg-gradient-to-r from-[#E85A4F] to-[#ff7b6b] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              -{product.discount}%
+            </span>
+          )}
+          {product.discount && product.discount < 50 && (
+            <span className="bg-[#282C2F] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              -{product.discount}%
             </span>
           )}
           {product.isNew && (
-            <span className="bg-[#4CAF50] text-white text-xs font-bold px-2 py-1 rounded-full">
-              MỚI
+            <span className="bg-gradient-to-r from-emerald-500 to-green-400 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              Mới
             </span>
           )}
           {product.isBestseller && (
-            <span className="bg-[#F9A825] text-white text-xs font-bold px-2 py-1 rounded-full">
-              BÁN CHẠY
+            <span className="bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              Hot
             </span>
           )}
         </div>
         
-        {/* Stock Badge */}
+        {/* Out of Stock Overlay */}
         {isOutOfStock && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <span className="bg-white text-[#282C2F] font-bold px-4 py-2 rounded-lg">
-              HẾT HÀNG
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center">
+            <span className="bg-[#282C2F] text-white font-bold px-6 py-3 rounded-full text-sm">
+              Hết hàng
             </span>
           </div>
         )}
+        
+        {/* Low Stock Badge */}
         {isLowStock && !isOutOfStock && (
-          <span className="absolute top-3 right-3 bg-[#FF5722] text-white text-xs font-bold px-2 py-1 rounded-full">
-            Chỉ còn {product.stock}!
+          <span className="absolute bottom-4 left-4 bg-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+            Còn {product.stock} sản phẩm
           </span>
         )}
       </div>
       
       {/* Product Info */}
-      <div className="p-4">
-        <h3 className="font-['Lora'] text-lg font-semibold text-[#282C2F] mb-2 line-clamp-1">
+      <div className="p-5">
+        <h3 className="font-semibold text-[#282C2F] text-lg mb-3 line-clamp-1 group-hover:text-[#E85A4F] transition-colors">
           {product.name}
         </h3>
         
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-[#E85A4F] font-bold text-lg">
+        <div className="flex items-baseline gap-3 mb-4">
+          <span className="text-[#E85A4F] font-bold text-xl">
             {formatPrice(product.price)}
           </span>
           {product.originalPrice && (
@@ -210,12 +218,12 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
         <button
           onClick={handleAddToCart}
           disabled={isOutOfStock || isAddingToCart}
-          className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+          className={`w-full py-3.5 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
             isOutOfStock 
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
               : showAddedFeedback
-                ? 'bg-[#4CAF50] text-white cursor-pointer'
-                : 'bg-[#282C2F] text-white hover:bg-[#E85A4F] active:scale-95 cursor-pointer'
+                ? 'bg-emerald-500 text-white'
+                : 'bg-[#282C2F] text-white hover:bg-[#E85A4F] cursor-pointer'
           }`}
         >
           {isAddingToCart ? (
@@ -224,21 +232,21 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
-              Đang thêm...
+              <span>Đang thêm...</span>
             </>
           ) : showAddedFeedback ? (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              Đã thêm!
+              <span>Đã thêm!</span>
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              Thêm vào giỏ
+              <span>Thêm vào giỏ</span>
             </>
           )}
         </button>

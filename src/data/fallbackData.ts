@@ -19,44 +19,44 @@ import type {
 // ==================== FLOWER IMAGES ====================
 export const flowerImages = {
   rose: [
-    'https://images.unsplash.com/photo-1518882605630-8eb92f79670c?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1518882605630-8eb92f79670c?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=500&fit=crop',
   ],
   tulip: [
-    'https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1589994160839-163cd867cfe8?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1589994160839-163cd867cfe8?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=400&h=500&fit=crop',
   ],
   lily: [
-    'https://images.unsplash.com/photo-1530092285049-1c42085fd395?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1560717799-68c97d7c7b6b?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1530092285049-1c42085fd395?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1560717799-68c97d7c7b6b?w=400&h=500&fit=crop',
   ],
   sunflower: [
-    'https://images.unsplash.com/photo-1551731409-43eb3e517a1a?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1598751528584-cc23a0872c53?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1551731409-43eb3e517a1a?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=400&h=500&fit=crop',
   ],
   daisy: [
-    'https://images.unsplash.com/photo-1568236179845-e1bd7e58e96e?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1606041011872-596597976b25?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1568236179845-e1bd7e58e96e?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&h=500&fit=crop',
   ],
   orchid: [
-    'https://images.unsplash.com/photo-1585664812212-f0a5e7a5fb86?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1567696911980-2c669aad8fd9?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1610397648930-477b8c7f0943?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1566907225472-514215d93146?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1585664812212-f0a5e7a5fb86?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1610397648930-477b8c7f0943?w=400&h=500&fit=crop',
   ],
   peony: [
-    'https://images.unsplash.com/photo-1558652093-9391c98f6a79?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1560882741-5c3e028f6265?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1558652093-9391c98f6a79?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1560882741-5c3e028f6265?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?w=400&h=500&fit=crop',
   ],
   lavender: [
-    'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1532925547908-a2769e0b9c45?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1595236108826-d802f3951d51?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1595236108826-d802f3951d51?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?w=400&h=500&fit=crop',
+    'https://images.unsplash.com/photo-1532925547908-a2769e0b9c45?w=400&h=500&fit=crop',
   ],
 };
 
