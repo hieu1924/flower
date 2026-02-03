@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../ui/Button';
 import { useSiteContent } from '../../hooks';
 import { fallbackSiteContent } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * App Download Section
@@ -16,7 +17,7 @@ export const AppDownloadSection: React.FC = () => {
         {/* Left Side - Phone Image */}
         <div className="relative bg-[#F9E7B9] min-h-[400px] lg:min-h-[590px]">
           <img
-            src="/images/cta-phone-1.png"
+            src={getImagePath('cta-phone-1.png')}
             alt="Mobile App"
             className="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0 h-[350px] md:h-[450px] lg:h-[520px] w-auto object-contain"
           />

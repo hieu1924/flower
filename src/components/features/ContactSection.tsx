@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../ui/Button';
 import { useSiteContent } from '../../hooks';
 import { fallbackSiteContent } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * Contact CTA Section
@@ -14,7 +15,7 @@ export const ContactSection: React.FC = () => {
     <section 
       className="relative py-20 md:py-32"
       style={{
-        backgroundImage: 'url(/images/contact-bg.png)',
+        backgroundImage: `url(${getImagePath('contact-bg.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

@@ -2,6 +2,7 @@ import React from 'react';
 import { SectionTitle } from '../ui/SectionTitle';
 import { useHowItWorks, useSiteContent } from '../../hooks';
 import { fallbackHowItWorks, fallbackSiteContent } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * How It Works Section
@@ -21,7 +22,7 @@ export const HowItWorksSection: React.FC = () => {
       id="how-it-works" 
       className="relative py-16 md:py-24"
       style={{
-        backgroundImage: 'url(/images/how-it-works-bg.png)',
+        backgroundImage: `url(${getImagePath('how-it-works-bg.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -43,17 +44,17 @@ export const HowItWorksSection: React.FC = () => {
           {/* Left Side - Decorative Images */}
           <div className="relative hidden lg:block h-[500px]">
             <img
-              src="/images/flower-feature-2.png"
+              src={getImagePath('flower-feature-2.png')}
               alt="Flower"
               className="absolute bottom-0 left-0 w-48 h-auto object-contain"
             />
             <img
-              src="/images/flower-feature-1.png"
+              src={getImagePath('flower-feature-1.png')}
               alt="Flower"
               className="absolute top-1/4 left-1/3 w-40 h-auto object-contain"
             />
             <img
-              src="/images/flower-feature-3.png"
+              src={getImagePath('flower-feature-3.png')}
               alt="Flower"
               className="absolute bottom-1/4 right-0 w-52 h-auto object-contain"
             />

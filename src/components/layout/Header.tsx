@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { useSiteContent } from '../../hooks';
 import { fallbackSiteContent } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * Header Component
@@ -35,7 +36,7 @@ export const Header: React.FC = () => {
       <div 
         className="relative"
         style={{
-          backgroundImage: 'url(/images/header-bg.png)',
+          backgroundImage: `url(${getImagePath('header-bg.png')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -45,7 +46,7 @@ export const Header: React.FC = () => {
             {/* Logo */}
             <a href="/" className="flex-shrink-0 cursor-pointer">
               <img 
-                src="/images/logo.svg" 
+                src={getImagePath('logo.svg')} 
                 alt="Flower Lab" 
                 className="h-6 md:h-7 w-auto"
               />

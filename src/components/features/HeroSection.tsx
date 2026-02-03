@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { useSiteContent } from '../../hooks';
 import { fallbackSiteContent } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * Hero Section
@@ -19,7 +20,7 @@ export const HeroSection: React.FC = () => {
       id="hero"
       className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[750px] flex items-center justify-center"
       style={{
-        backgroundImage: 'url(/images/hero-bg.png)',
+        backgroundImage: `url(${getImagePath('hero-bg.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

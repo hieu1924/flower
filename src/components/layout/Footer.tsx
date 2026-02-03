@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSiteContent } from '../../hooks';
 import { fallbackSiteContent } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * Footer Component
@@ -20,7 +21,7 @@ export const Footer: React.FC = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
-              src="/images/logo.svg" 
+              src={getImagePath('logo.svg')} 
               alt="Flower Lab" 
               className="h-12 md:h-14 w-auto brightness-0 invert"
             />

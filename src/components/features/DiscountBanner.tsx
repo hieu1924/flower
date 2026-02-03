@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../ui/Button';
 import { useSiteContent, useSiteConfig } from '../../hooks';
 import { fallbackSiteContent, fallbackSiteConfig } from '../../data';
+import { getImagePath } from '../../utils';
 
 /**
  * Discount Banner Section
@@ -18,7 +19,7 @@ export const DiscountBanner: React.FC = () => {
     <section 
       className="relative py-20 md:py-32"
       style={{
-        backgroundImage: 'url(/images/discount-banner.png)',
+        backgroundImage: `url(${getImagePath('discount-banner.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
