@@ -1,0 +1,10 @@
+export { HeroSection } from './HeroSection';
+export { FeaturesSection } from './FeaturesSection';
+export { HowItWorksSection } from './HowItWorksSection';
+export { BestsellersSection } from './BestsellersSection';
+export { DiscountBanner } from './DiscountBanner';
+export { ReviewsSection } from './ReviewsSection';
+export { AboutSection } from './AboutSection';
+export { ContactSection } from './ContactSection';
+export { AppDownloadSection } from './AppDownloadSection';
+export { InstagramSection } from './InstagramSection';
