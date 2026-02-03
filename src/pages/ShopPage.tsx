@@ -1,95 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
-// ==================== TYPES ====================
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  discount?: number;
-  image: string;
-  images: string[]; // Multiple images for gallery
-  category: 'promo' | 'big-discount' | 'flash-sale' | 'recommendation';
-  isNew?: boolean;
-  isBestseller?: boolean;
-  stock: number;
-}
-
-interface CartItem extends Product {
-  quantity: number;
-}
-
-// ==================== PRODUCT DATA (Based on Figma) ====================
-// Using real flower images from Unsplash
-const flowerImages = {
-  rose: [
-    'https://images.unsplash.com/photo-1518882605630-8eb92f79670c?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=400&fit=crop',
-  ],
-  tulip: [
-    'https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1589994160839-163cd867cfe8?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=400&h=400&fit=crop',
-  ],
-  lily: [
-    'https://images.unsplash.com/photo-1530092285049-1c42085fd395?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1560717799-68c97d7c7b6b?w=400&h=400&fit=crop',
-  ],
-  sunflower: [
-    'https://images.unsplash.com/photo-1551731409-43eb3e517a1a?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1598751528584-cc23a0872c53?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=400&h=400&fit=crop',
-  ],
-  daisy: [
-    'https://images.unsplash.com/photo-1568236179845-e1bd7e58e96e?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&h=400&fit=crop',
-  ],
-  orchid: [
-    'https://images.unsplash.com/photo-1585664812212-f0a5e7a5fb86?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1567696911980-2c669aad8fd9?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1610397648930-477b8c7f0943?w=400&h=400&fit=crop',
-  ],
-  peony: [
-    'https://images.unsplash.com/photo-1558652093-9391c98f6a79?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1560882741-5c3e028f6265?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?w=400&h=400&fit=crop',
-  ],
-  lavender: [
-    'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1532925547908-a2769e0b9c45?w=400&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1595236108826-d802f3951d51?w=400&h=400&fit=crop',
-  ],
-};
-
-const products: Product[] = [
-  // Mục KHUYẾN MÃI
-  { id: 1, name: 'Hoa Hồng Đỏ', price: 130000, originalPrice: 600000, discount: 80, image: flowerImages.rose[0], images: flowerImages.rose, category: 'promo', isNew: true, stock: 15 },
-  { id: 2, name: 'Hoa Tulip Hà Lan', price: 80000, originalPrice: 450000, discount: 85, image: flowerImages.tulip[0], images: flowerImages.tulip, category: 'promo', stock: 20 },
-  { id: 3, name: 'Hoa Lily Trắng', price: 150000, originalPrice: 550000, discount: 75, image: flowerImages.lily[0], images: flowerImages.lily, category: 'promo', isBestseller: true, stock: 8 },
-  { id: 4, name: 'Hoa Hướng Dương', price: 100000, originalPrice: 500000, discount: 80, image: flowerImages.sunflower[0], images: flowerImages.sunflower, category: 'promo', stock: 25 },
-  
-  // Mục GIẢM GIÁ LỚN (80-95%)
-  { id: 5, name: 'Hoa Cúc Trắng', price: 30000, originalPrice: 600000, discount: 95, image: flowerImages.daisy[0], images: flowerImages.daisy, category: 'big-discount', stock: 5 },
-  { id: 6, name: 'Hoa Lan Hồ Điệp', price: 60000, originalPrice: 500000, discount: 88, image: flowerImages.orchid[0], images: flowerImages.orchid, category: 'big-discount', isNew: true, stock: 12 },
-  { id: 7, name: 'Hoa Mẫu Đơn', price: 80000, originalPrice: 400000, discount: 80, image: flowerImages.peony[0], images: flowerImages.peony, category: 'big-discount', stock: 18 },
-  { id: 8, name: 'Hoa Oải Hương', price: 50000, originalPrice: 450000, discount: 89, image: flowerImages.lavender[0], images: flowerImages.lavender, category: 'big-discount', isBestseller: true, stock: 3 },
-  
-  // Mục FLASH SALE (45-75%)
-  { id: 9, name: 'Bó Hồng Nhung', price: 150000, originalPrice: 600000, discount: 75, image: flowerImages.rose[1], images: flowerImages.rose, category: 'flash-sale', stock: 10 },
-  { id: 10, name: 'Tulip Nhiều Màu', price: 220000, originalPrice: 400000, discount: 45, image: flowerImages.tulip[1], images: flowerImages.tulip, category: 'flash-sale', isNew: true, stock: 7 },
-  { id: 11, name: 'Lily Vàng', price: 180000, originalPrice: 550000, discount: 67, image: flowerImages.lily[1], images: flowerImages.lily, category: 'flash-sale', stock: 14 },
-  { id: 12, name: 'Hướng Dương Mini', price: 120000, originalPrice: 480000, discount: 75, image: flowerImages.sunflower[1], images: flowerImages.sunflower, category: 'flash-sale', isBestseller: true, stock: 6 },
-  
-  // Mục GỢI Ý CHO BẠN
-  { id: 13, name: 'Bó Hồng Sang Trọng', price: 450000, image: flowerImages.rose[2], images: flowerImages.rose, category: 'recommendation', isBestseller: true, stock: 20 },
-  { id: 14, name: 'Bộ Sưu Tập Tulip', price: 380000, image: flowerImages.tulip[2], images: flowerImages.tulip, category: 'recommendation', isNew: true, stock: 15 },
-  { id: 15, name: 'Hoa Lily Cắm Lọ', price: 520000, image: flowerImages.lily[2], images: flowerImages.lily, category: 'recommendation', stock: 12 },
-  { id: 16, name: 'Hoa Hỗn Hợp', price: 350000, image: flowerImages.peony[2], images: flowerImages.peony, category: 'recommendation', stock: 25 },
-];
+import type { Product, CartItem } from '../types';
+import { useProducts, useCategories, useSiteContent, useSiteConfig } from '../hooks';
+import { 
+  fallbackProducts, 
+  fallbackCategories, 
+  fallbackSiteContent, 
+  fallbackSiteConfig 
+} from '../data';
 
 // ==================== FORMAT HELPERS ====================
 const formatPrice = (price: number): string => {
@@ -712,6 +630,12 @@ const Toast = ({ message, type, isVisible }: ToastProps) => {
 
 // ==================== MAIN SHOP PAGE ====================
 const ShopPage = () => {
+  // Fetch data from Google Sheets (or use fallback)
+  const { data: products, loading: productsLoading } = useProducts(fallbackProducts);
+  const { data: categories } = useCategories(fallbackCategories);
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+  const { data: siteConfig } = useSiteConfig(fallbackSiteConfig);
+
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -722,8 +646,9 @@ const ShopPage = () => {
     isVisible: false,
   });
   
-  // Flash sale ends in 6 hours from now
-  const flashSaleEnd = new Date(Date.now() + 6 * 60 * 60 * 1000);
+  // Flash sale ends based on config (default 6 hours from now)
+  const flashSaleDuration = siteConfig?.flashSaleDuration || 6;
+  const flashSaleEnd = new Date(Date.now() + flashSaleDuration * 60 * 60 * 1000);
 
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
     setToast({ message, type, isVisible: true });
@@ -775,15 +700,19 @@ const ShopPage = () => {
   const flashSaleProducts = products.filter(p => p.category === 'flash-sale');
   const recommendedProducts = products.filter(p => p.category === 'recommendation');
 
-  const categories = [
-    { id: 'all', label: 'Tất cả sản phẩm' },
-    { id: 'promo', label: 'Khuyến mãi' },
-    { id: 'big-discount', label: 'Giảm giá lớn' },
-    { id: 'flash-sale', label: 'Flash Sale' },
-    { id: 'recommendation', label: 'Gợi ý cho bạn' },
-  ];
-
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Loading state
+  if (productsLoading) {
+    return (
+      <div className="min-h-screen bg-[#F5F1ED] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#E85A4F] mx-auto mb-4"></div>
+          <p className="text-[#282C2F] font-medium">Đang tải sản phẩm...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F5F1ED]">
@@ -796,16 +725,16 @@ const ShopPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-['Lora'] text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
-              CHÀO MỮNG ĐẾN NATNAT FLOWER SHOP
+              {siteContent?.shop?.heroTitle || 'CHÀO MỪNG ĐẾN NATNAT FLOWER SHOP'}
             </h1>
             <p className="text-xl text-white/80 mb-8">
-              Khám phá bộ sưu tập hoa tươi đẹp cho mọi dịp
+              {siteContent?.shop?.heroSubtitle || 'Khám phá bộ sưu tập hoa tươi đẹp cho mọi dịp'}
             </p>
             <Link 
               to="#products" 
               className="inline-flex items-center gap-2 bg-[#E85A4F] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#E85A4F] transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
             >
-              Mua ngay
+              {siteContent?.shop?.ctaText || 'Mua ngay'}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -1013,22 +942,22 @@ const ShopPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold mb-4">
-              Đăng ký nhận ưu đãi đặc biệt
+              {siteContent?.newsletter?.title || 'Đăng ký nhận ưu đãi đặc biệt'}
             </h2>
             <p className="text-white/90 mb-8">
-              Nhận giảm giá độc quyền và là người đầu tiên biết về sản phẩm mới!
+              {siteContent?.newsletter?.subtitle || 'Nhận giảm giá độc quyền và là người đầu tiên biết về sản phẩm mới!'}
             </p>
             <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input 
                 type="email" 
-                placeholder="Nhập email của bạn"
+                placeholder={siteContent?.newsletter?.placeholder || 'Nhập email của bạn'}
                 className="flex-1 px-6 py-4 rounded-full text-[#282C2F] focus:outline-none focus:ring-4 focus:ring-white/30"
               />
               <button 
                 type="submit"
                 className="px-8 py-4 bg-[#282C2F] text-white rounded-full font-semibold hover:bg-white hover:text-[#282C2F] transition-colors cursor-pointer"
               >
-                Đăng ký
+                {siteContent?.newsletter?.ctaText || 'Đăng ký'}
               </button>
             </form>
           </div>

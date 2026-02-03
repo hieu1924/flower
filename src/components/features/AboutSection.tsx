@@ -1,31 +1,26 @@
 import React from 'react';
+import { useAbout, useSiteContent } from '../../hooks';
+import { fallbackAbout, fallbackSiteContent } from '../../data';
 
 /**
  * About Us Section
- * Two columns: Who we are & What we do
+ * Two columns: Who we are & What we do (dynamic content from Google Sheets)
  */
 export const AboutSection: React.FC = () => {
-  const sections = [
-    {
-      title: 'Chúng tôi là ai',
-      content: 'NatNat Flower Shop là cửa hàng hoa tươi uy tín hàng đầu tại Việt Nam. Chúng tôi cam kết mang đến những bó hoa tươi đẹp nhất, được chọn lọc kỹ lưỡng từ những nhà vườn uy tín. Mỗi sản phẩm đều được tạo ra với tình yêu và sự tận tâm.',
-      image: '/images/about-1.png',
-      link: 'Xem cam kết của chúng tôi',
-    },
-    {
-      title: 'Chúng tôi làm gì',
-      content: 'Chúng tôi chuyên cung cấp các dịch vụ hoa tươi cho mọi dịp: sinh nhật, cưới hỏi, khai trương, chia buồn, và các dịp đặc biệt khác. Đội ngũ florist chuyên nghiệp sẽ giúp bạn tạo nên những bó hoa ấn tượng nhất.',
-      image: '/images/about-2.png',
-      link: 'Xem cam kết của chúng tôi',
-    },
-  ];
+  const { data: sections } = useAbout(fallbackAbout);
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+
+  // Sort by displayOrder if available
+  const sortedSections = [...sections].sort((a, b) => 
+    (a.displayOrder || 0) - (b.displayOrder || 0)
+  );
 
   return (
     <section id="about" className="py-16 md:py-24 bg-[#F5F1ED]">
       <div className="container-fluid">
-        {sections.map((section, index) => (
+        {sortedSections.map((section, index) => (
           <div 
-            key={index}
+            key={section.id || index}
             className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center ${
               index === 1 ? 'mt-16 md:mt-24 lg:flex-row-reverse' : ''
             }`}
@@ -53,7 +48,7 @@ export const AboutSection: React.FC = () => {
                 href="#" 
                 className="inline-block font-['Lato'] text-base text-[#282C2F] underline hover:no-underline"
               >
-                {section.link}
+                {section.linkText || siteContent?.about?.link1Text || 'Xem cam kết của chúng tôi'}
               </a>
             </div>
           </div>

@@ -1,14 +1,18 @@
 import React from 'react';
+import { useSiteContent } from '../../hooks';
+import { fallbackSiteContent } from '../../data';
 
 /**
  * Footer Component
- * Footer matching Figma design
+ * Footer matching Figma design (dynamic content from Google Sheets)
  * - Dark background
  * - Logo centered
  * - Links: Privacy Policy, Terms & Conditions
  * - Copyright
  */
 export const Footer: React.FC = () => {
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+
   return (
     <footer className="bg-[#282C2F] text-white">
       <div className="container-fluid py-16 md:py-20">
@@ -28,20 +32,20 @@ export const Footer: React.FC = () => {
               href="#privacy" 
               className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
             >
-              Chính sách bảo mật
+              {siteContent?.footer?.privacyText || 'Chính sách bảo mật'}
             </a>
             <span className="hidden md:block text-white/40">|</span>
             <a 
               href="#terms" 
               className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
             >
-              Điều khoản sử dụng
+              {siteContent?.footer?.termsText || 'Điều khoản sử dụng'}
             </a>
           </div>
           
           {/* Copyright */}
           <p className="font-['Inter'] text-sm text-white/80">
-            © 2026 Bản quyền thuộc NatNat Flower Shop
+            {siteContent?.footer?.copyright || '© 2026 Bản quyền thuộc NatNat Flower Shop'}
           </p>
         </div>
       </div>

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
+import { useSiteContent } from '../../hooks';
+import { fallbackSiteContent } from '../../data';
 
 /**
  * Header Component
  * Navigation header matching Figma design
- * - Top banner: Free shipping message
+ * - Top banner: Free shipping message (dynamic from Google Sheets)
  * - Logo + Navigation + CTA Button (Shop Now → /shop)
  */
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
   
   const navItems = [
     { label: 'TÍNH NĂNG', href: '#features' },
@@ -24,7 +27,7 @@ export const Header: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-[#282C2F] py-1">
         <p className="text-center text-white text-xs md:text-sm font-medium tracking-wide">
-          MIỄN PHÍ VẬN CHUYỂN CHO ĐƠN HÀNG TỪ 500.000đ
+          {siteContent?.header?.bannerText || 'MIỄN PHÍ VẬN CHUYỂN CHO ĐƠN HÀNG TỪ 500.000đ'}
         </p>
       </div>
       

@@ -1,27 +1,14 @@
 import React from 'react';
+import { useTestimonials, useSiteContent } from '../../hooks';
+import { fallbackTestimonials, fallbackSiteContent } from '../../data';
 
 /**
  * Reviews/Testimonials Section
- * Customer reviews carousel
+ * Customer reviews carousel (dynamic content from Google Sheets)
  */
 export const ReviewsSection: React.FC = () => {
-  const testimonials = [
-    {
-      name: 'Nguyễn Thị Hương',
-      rating: 5,
-      text: 'Hoa gửi đến trông y hệt như hình trên website! Tôi rất hài lòng với dịch vụ và sẽ sử dụng lại!',
-    },
-    {
-      name: 'Trần Văn Minh',
-      rating: 5,
-      text: 'Luôn dễ dàng, luôn đẹp. Hoa đến đúng giờ và còn đẹp hơn ngoài đời thực!',
-    },
-    {
-      name: 'Lê Thị Mai',
-      rating: 5,
-      text: 'Bó hoa tuyệt vời và bố cục đẹp! Vượt xa mong đợi của tôi. Rất khuyến khích mọi người.',
-    },
-  ];
+  const { data: testimonials } = useTestimonials(fallbackTestimonials);
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
 
   return (
     <section id="reviews" className="py-16 md:py-24 bg-white">
@@ -29,7 +16,7 @@ export const ReviewsSection: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-['Lato'] text-2xl md:text-3xl text-[#282C2F] leading-normal tracking-wide">
-            Khách hàng nói gì về chúng tôi
+            {siteContent?.reviews?.title || 'Khách hàng nói gì về chúng tôi'}
           </h2>
         </div>
 
@@ -37,12 +24,12 @@ export const ReviewsSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div 
-              key={index}
+              key={testimonial.id || index}
               className="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-100"
             >
               {/* Rating Stars */}
               <div className="text-[#000] text-base mb-4 tracking-wide text-center">
-                ✦ ✦ ✦ ✦ ✦
+                {'✦ '.repeat(testimonial.rating || 5).trim()}
               </div>
               
               {/* Name */}

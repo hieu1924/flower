@@ -1,11 +1,15 @@
 import React from 'react';
 import { Button } from '../ui/Button';
+import { useSiteContent } from '../../hooks';
+import { fallbackSiteContent } from '../../data';
 
 /**
  * Contact CTA Section
- * Contact form CTA with background
+ * Contact form CTA with background (dynamic content from Google Sheets)
  */
 export const ContactSection: React.FC = () => {
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+
   return (
     <section 
       className="relative py-20 md:py-32"
@@ -20,10 +24,10 @@ export const ContactSection: React.FC = () => {
       
       <div className="relative z-10 container-fluid text-center">
         <h2 className="font-['Lora'] text-2xl md:text-4xl text-[#282C2F] mb-8 max-w-md mx-auto leading-snug">
-          Liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào
+          {siteContent?.contact?.title || 'Liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào'}
         </h2>
         
-        <Button>Liên hệ</Button>
+        <Button>{siteContent?.contact?.ctaText || 'Liên hệ'}</Button>
       </div>
     </section>
   );

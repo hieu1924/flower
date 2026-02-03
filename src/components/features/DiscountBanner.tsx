@@ -1,11 +1,19 @@
 import React from 'react';
 import { Button } from '../ui/Button';
+import { useSiteContent, useSiteConfig } from '../../hooks';
+import { fallbackSiteContent, fallbackSiteConfig } from '../../data';
 
 /**
  * Discount Banner Section
- * CTA banner with discount offer
+ * CTA banner with discount offer (dynamic content from Google Sheets)
  */
 export const DiscountBanner: React.FC = () => {
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+  const { data: siteConfig } = useSiteConfig(fallbackSiteConfig);
+
+  const discountPercentage = siteConfig?.discountPercentage || 15;
+  const defaultTitle = `Đặt hàng ngay và nhận giảm ${discountPercentage}% phí giao hàng`;
+
   return (
     <section 
       className="relative py-20 md:py-32"
@@ -20,10 +28,10 @@ export const DiscountBanner: React.FC = () => {
       
       <div className="relative z-10 container-fluid text-center">
         <h2 className="font-['Lora'] text-2xl md:text-4xl lg:text-5xl text-[#282C2F] mb-8 max-w-2xl mx-auto leading-tight">
-          Đặt hàng ngay và nhận giảm 15% phí giao hàng
+          {siteContent?.discount?.title || defaultTitle}
         </h2>
         
-        <Button>Mua ngay</Button>
+        <Button>{siteContent?.discount?.ctaText || 'Mua ngay'}</Button>
       </div>
     </section>
   );

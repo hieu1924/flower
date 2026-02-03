@@ -1,18 +1,23 @@
 import React from 'react';
+import { useInstagram, useSiteContent, useSiteConfig } from '../../hooks';
+import { fallbackInstagram, fallbackSiteContent, fallbackSiteConfig } from '../../data';
 
 /**
  * Instagram Section
- * Instagram feed gallery
+ * Instagram feed gallery (dynamic content from Google Sheets)
  */
 export const InstagramSection: React.FC = () => {
-  const images = [
-    '/images/instagram-1.png',
-    '/images/instagram-2.png',
-    '/images/instagram-3.png',
-    '/images/instagram-4.png',
-    '/images/instagram-5.png',
-    '/images/instagram-6.png',
-  ];
+  const { data: posts } = useInstagram(fallbackInstagram);
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+  const { data: siteConfig } = useSiteConfig(fallbackSiteConfig);
+
+  // Sort by displayOrder if available
+  const sortedPosts = [...posts].sort((a, b) => 
+    (a.displayOrder || 0) - (b.displayOrder || 0)
+  );
+
+  const instagramHandle = siteConfig?.instagramHandle || '@flowerlab17';
+  const instagramUrl = siteConfig?.instagramUrl || 'https://instagram.com/flowerlab17';
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -20,31 +25,31 @@ export const InstagramSection: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-8">
           <h2 className="font-['Lora'] text-2xl md:text-4xl text-[#282C2F] mb-2">
-            Theo dõi chúng tôi trên Instagram
+            {siteContent?.instagram?.title || 'Theo dõi chúng tôi trên Instagram'}
           </h2>
           <a 
-            href="https://instagram.com/flowerlab17" 
+            href={instagramUrl}
             target="_blank" 
             rel="noopener noreferrer"
             className="font-['Lato'] text-lg md:text-xl text-[#737373] hover:text-[#282C2F] cursor-pointer"
           >
-            @flowerlab17
+            {instagramHandle}
           </a>
         </div>
 
         {/* Instagram Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4">
-          {images.map((image, index) => (
+          {sortedPosts.map((post, index) => (
             <a
-              key={index}
-              href="https://instagram.com/flowerlab17"
+              key={post.id || index}
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="relative overflow-hidden aspect-square group cursor-pointer"
             >
               <img
-                src={image}
-                alt={`Instagram ${index + 1}`}
+                src={post.imageUrl}
+                alt={post.altText || `Instagram ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               {/* Hover Overlay */}

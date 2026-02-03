@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
+import { useSiteContent } from '../../hooks';
+import { fallbackSiteContent } from '../../data';
 
 /**
  * Hero Section
- * Main hero section with background image
+ * Main hero section with background image (dynamic content from Google Sheets)
  * - Large heading: Lora 32-48px
  * - Subtitle: Lato 16px
  * - CTA Button → navigates to Shop page
  */
 export const HeroSection: React.FC = () => {
+  const { data: siteContent } = useSiteContent(fallbackSiteContent);
+
   return (
     <section 
       id="hero"
@@ -28,19 +32,17 @@ export const HeroSection: React.FC = () => {
         <div className="max-w-xl mx-auto">
           {/* Heading */}
           <h1 className="font-['Lora'] text-3xl md:text-4xl lg:text-5xl font-normal text-[#282C2F] leading-tight mb-6">
-            Làm mới không gian{' '}
-            <br className="hidden md:block" />
-            với cây xanh và những bó hoa tinh tế
+            {siteContent?.hero?.title || 'Làm mới không gian với cây xanh và những bó hoa tinh tế'}
           </h1>
           
           {/* Subtitle */}
           <p className="font-['Lato'] text-base md:text-lg text-[#282C2F] leading-relaxed mb-8 max-w-md mx-auto">
-            Tạo khu vườn trong nhà hoàn hảo với các loại cây cảnh, cây nở hoa, cây treo và nhiều hơn nữa!
+            {siteContent?.hero?.subtitle || 'Tạo khu vườn trong nhà hoàn hảo với các loại cây cảnh, cây nở hoa, cây treo và nhiều hơn nữa!'}
           </p>
           
           {/* CTA Button - Links to Shop */}
           <Link to="/shop">
-            <Button>Mua ngay</Button>
+            <Button>{siteContent?.hero?.ctaText || 'Mua ngay'}</Button>
           </Link>
         </div>
       </div>
