@@ -3,6 +3,7 @@
  * This ensures the app works even without API configuration
  */
 
+import { getImagePath } from '../utils';
 import type {
   Product,
   Category,
@@ -122,19 +123,19 @@ export const fallbackTestimonials: Testimonial[] = [
 export const fallbackFeatures: Feature[] = [
   {
     id: 1,
-    icon: '/images/flower-feature-1.png',
+    icon: getImagePath('flower-feature-1.png'),
     title: 'Hoa tươi mỗi ngày',
     description: 'Chúng tôi chỉ sử dụng hoa tươi được nhập về hàng ngày.',
   },
   {
     id: 2,
-    icon: '/images/flower-feature-2.png',
+    icon: getImagePath('flower-feature-2.png'),
     title: 'Giao hàng nhanh',
     description: 'Giao hàng trong ngày cho các đơn hàng nội thành.',
   },
   {
     id: 3,
-    icon: '/images/flower-feature-3.png',
+    icon: getImagePath('flower-feature-3.png'),
     title: 'Giá cả hợp lý',
     description: 'Chất lượng cao với giá cả phải chăng cho mọi người.',
   },
@@ -221,20 +222,20 @@ export const fallbackSiteConfig: SiteConfig = {
 
 // ==================== BESTSELLERS ====================
 export const fallbackBestsellers: BestsellerProduct[] = [
-  { id: 1, image: '/images/product-1.png', name: 'Hoa Hồng Đỏ', price: 139000, displayOrder: 1 },
-  { id: 2, image: '/images/product-2.png', name: 'Hoa Tulip', price: 82000, displayOrder: 2 },
-  { id: 3, image: '/images/product-3.png', name: 'Bó Biển Vàng', price: 144000, displayOrder: 3 },
-  { id: 4, image: '/images/product-4.png', name: 'Hoa Hồng Cam', price: 67000, displayOrder: 4 },
+  { id: 1, image: getImagePath('product-1.png'), name: 'Hoa Hồng Đỏ', price: 139000, displayOrder: 1 },
+  { id: 2, image: getImagePath('product-2.png'), name: 'Hoa Tulip', price: 82000, displayOrder: 2 },
+  { id: 3, image: getImagePath('product-3.png'), name: 'Bó Biển Vàng', price: 144000, displayOrder: 3 },
+  { id: 4, image: getImagePath('product-4.png'), name: 'Hoa Hồng Cam', price: 67000, displayOrder: 4 },
 ];
 
 // ==================== INSTAGRAM ====================
 export const fallbackInstagram: InstagramPost[] = [
-  { id: 1, imageUrl: '/images/instagram-1.png', altText: 'Instagram 1', displayOrder: 1 },
-  { id: 2, imageUrl: '/images/instagram-2.png', altText: 'Instagram 2', displayOrder: 2 },
-  { id: 3, imageUrl: '/images/instagram-3.png', altText: 'Instagram 3', displayOrder: 3 },
-  { id: 4, imageUrl: '/images/instagram-4.png', altText: 'Instagram 4', displayOrder: 4 },
-  { id: 5, imageUrl: '/images/instagram-5.png', altText: 'Instagram 5', displayOrder: 5 },
-  { id: 6, imageUrl: '/images/instagram-6.png', altText: 'Instagram 6', displayOrder: 6 },
+  { id: 1, imageUrl: getImagePath('instagram-1.png'), altText: 'Instagram 1', displayOrder: 1 },
+  { id: 2, imageUrl: getImagePath('instagram-2.png'), altText: 'Instagram 2', displayOrder: 2 },
+  { id: 3, imageUrl: getImagePath('instagram-3.png'), altText: 'Instagram 3', displayOrder: 3 },
+  { id: 4, imageUrl: getImagePath('instagram-4.png'), altText: 'Instagram 4', displayOrder: 4 },
+  { id: 5, imageUrl: getImagePath('instagram-5.png'), altText: 'Instagram 5', displayOrder: 5 },
+  { id: 6, imageUrl: getImagePath('instagram-6.png'), altText: 'Instagram 6', displayOrder: 6 },
 ];
 
 // ==================== ABOUT ====================
@@ -243,7 +244,7 @@ export const fallbackAbout: AboutSection[] = [
     id: 1,
     title: 'Chúng tôi là ai',
     content: 'NatNat Flower Shop là cửa hàng hoa tươi uy tín hàng đầu tại Việt Nam. Chúng tôi cam kết mang đến những bó hoa tươi đẹp nhất, được chọn lọc kỹ lưỡng từ những nhà vườn uy tín. Mỗi sản phẩm đều được tạo ra với tình yêu và sự tận tâm.',
-    image: '/images/about-1.png',
+    image: getImagePath('about-1.png'),
     linkText: 'Xem cam kết của chúng tôi',
     displayOrder: 1,
   },
@@ -251,7 +252,7 @@ export const fallbackAbout: AboutSection[] = [
     id: 2,
     title: 'Chúng tôi làm gì',
     content: 'Chúng tôi chuyên cung cấp các dịch vụ hoa tươi cho mọi dịp: sinh nhật, cưới hỏi, khai trương, chia buồn, và các dịp đặc biệt khác. Đội ngũ florist chuyên nghiệp sẽ giúp bạn tạo nên những bó hoa ấn tượng nhất.',
-    image: '/images/about-2.png',
+    image: getImagePath('about-2.png'),
     linkText: 'Xem cam kết của chúng tôi',
     displayOrder: 2,
   },
