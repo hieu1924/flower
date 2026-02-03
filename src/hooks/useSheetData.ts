@@ -17,6 +17,7 @@ import {
   fetchHowItWorks,
   isApiEnabled,
 } from '../services/sheetsApi';
+import { fixImagePath } from '../utils';
 import type {
   AllDataResponse,
   Product,
@@ -30,6 +31,40 @@ import type {
   AboutSection,
   HowItWorksStep,
 } from '../types';
+
+// ==================== IMAGE PATH FIXER ====================
+/**
+ * Fix image paths in data from API
+ * Converts /images/xxx.png to correct base URL path
+ */
+function fixDataImagePaths<T>(data: T): T {
+  if (Array.isArray(data)) {
+    return data.map(item => fixDataImagePaths(item)) as T;
+  }
+  
+  if (data && typeof data === 'object') {
+    const fixed: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(data)) {
+      // Fix common image field names
+      if (['image', 'imageUrl', 'icon', 'images'].includes(key)) {
+        if (typeof value === 'string') {
+          fixed[key] = fixImagePath(value);
+        } else if (Array.isArray(value)) {
+          fixed[key] = value.map(v => typeof v === 'string' ? fixImagePath(v) : v);
+        } else {
+          fixed[key] = value;
+        }
+      } else if (typeof value === 'object' && value !== null) {
+        fixed[key] = fixDataImagePaths(value);
+      } else {
+        fixed[key] = value;
+      }
+    }
+    return fixed as T;
+  }
+  
+  return data;
+}
 
 // ==================== GENERIC HOOK ====================
 interface UseDataResult<T> {
@@ -68,7 +103,9 @@ function useData<T>(
           : typeof result === 'object' && Object.keys(result as object).length > 0;
         if (hasData) {
           console.log('[useData] Setting data from API');
-          setData(result);
+          // Fix image paths in API data
+          const fixedData = fixDataImagePaths(result);
+          setData(fixedData);
         }
       }
     } catch (err) {

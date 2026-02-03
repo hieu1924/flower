@@ -1,1 +1,1 @@
-export { getAssetPath, getImagePath } from './assetPath';
+export { getAssetPath, getImagePath, fixImagePath } from './assetPath';
