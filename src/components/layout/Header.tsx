@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 /**
  * Header Component
  * Navigation header matching Figma design
  * - Top banner: Free shipping message
- * - Logo + Navigation + CTA Button
+ * - Logo + Navigation + CTA Button (Shop Now → /shop)
  */
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,9 +63,11 @@ export const Header: React.FC = () => {
             
             {/* CTA Button */}
             <div className="flex items-center gap-4">
-              <Button size="sm" className="hidden md:inline-flex">
-                Buy Now
-              </Button>
+              <Link to="/shop" className="hidden md:inline-flex">
+                <Button size="sm">
+                  Shop Now
+                </Button>
+              </Link>
               
               {/* Mobile Menu Button */}
               <button
@@ -104,9 +107,11 @@ export const Header: React.FC = () => {
                 </a>
               ))}
               <div className="pt-4">
-                <Button size="sm" className="w-full">
-                  Buy Now
-                </Button>
+                <Link to="/shop" className="block">
+                  <Button size="sm" className="w-full">
+                    Shop Now
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

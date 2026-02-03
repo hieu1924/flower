@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 /**
@@ -6,7 +7,7 @@ import { Button } from '../ui/Button';
  * Main hero section with background image
  * - Large heading: Lora 32-48px
  * - Subtitle: Lato 16px
- * - CTA Button
+ * - CTA Button → navigates to Shop page
  */
 export const HeroSection: React.FC = () => {
   return (
@@ -37,8 +38,10 @@ export const HeroSection: React.FC = () => {
             Create the perfect indoor jungle with our bold houseplants, blooming plants, hanging plants, and more!
           </p>
           
-          {/* CTA Button */}
-          <Button>Buy Now</Button>
+          {/* CTA Button - Links to Shop */}
+          <Link to="/shop">
+            <Button>Shop Now</Button>
+          </Link>
         </div>
       </div>
     </section>
