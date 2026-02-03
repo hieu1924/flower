@@ -28,19 +28,19 @@ export const HeroSection: React.FC = () => {
         <div className="max-w-xl mx-auto">
           {/* Heading */}
           <h1 className="font-['Lora'] text-3xl md:text-4xl lg:text-5xl font-normal text-[#282C2F] leading-tight mb-6">
-            Refresh your space{' '}
+            Làm mới không gian{' '}
             <br className="hidden md:block" />
-            with lush greenery and exquisite flower bouquets
+            với cây xanh và những bó hoa tinh tế
           </h1>
           
           {/* Subtitle */}
           <p className="font-['Lato'] text-base md:text-lg text-[#282C2F] leading-relaxed mb-8 max-w-md mx-auto">
-            Create the perfect indoor jungle with our bold houseplants, blooming plants, hanging plants, and more!
+            Tạo khu vườn trong nhà hoàn hảo với các loại cây cảnh, cây nở hoa, cây treo và nhiều hơn nữa!
           </p>
           
           {/* CTA Button - Links to Shop */}
           <Link to="/shop">
-            <Button>Shop Now</Button>
+            <Button>Mua ngay</Button>
           </Link>
         </div>
       </div>

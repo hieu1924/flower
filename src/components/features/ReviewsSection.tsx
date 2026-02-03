@@ -7,19 +7,19 @@ import React from 'react';
 export const ReviewsSection: React.FC = () => {
   const testimonials = [
     {
-      name: 'Lucy S.',
+      name: 'Nguyễn Thị Hương',
       rating: 5,
-      text: 'The flowers I sent looked exactly like the website photo! I am very happy with the service and will use them again!',
+      text: 'Hoa gửi đến trông y hệt như hình trên website! Tôi rất hài lòng với dịch vụ và sẽ sử dụng lại!',
     },
     {
-      name: 'Kathleen M.',
+      name: 'Trần Văn Minh',
       rating: 5,
-      text: 'Always easy, always beautiful. The flowers arrived on time and looked even better in real life!',
+      text: 'Luôn dễ dàng, luôn đẹp. Hoa đến đúng giờ và còn đẹp hơn ngoài đời thực!',
     },
     {
-      name: 'Christine W.',
+      name: 'Lê Thị Mai',
       rating: 5,
-      text: 'Excellent flower bouquet and beautiful arrangements! My expectations were exceeded. Would highly recommend.',
+      text: 'Bó hoa tuyệt vời và bố cục đẹp! Vượt xa mong đợi của tôi. Rất khuyến khích mọi người.',
     },
   ];
 
@@ -29,7 +29,7 @@ export const ReviewsSection: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-['Lato'] text-2xl md:text-3xl text-[#282C2F] leading-normal tracking-wide">
-            What our customers say about us
+            Khách hàng nói gì về chúng tôi
           </h2>
         </div>
 

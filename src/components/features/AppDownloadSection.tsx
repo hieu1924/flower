@@ -22,18 +22,18 @@ export const AppDownloadSection: React.FC = () => {
         <div className="bg-white py-16 px-8 lg:px-20 flex items-center">
           <div className="max-w-lg">
             <h2 className="font-['Lora'] text-3xl md:text-4xl lg:text-5xl text-[#282C2F] mb-6 leading-snug">
-              We're with you
+              Chúng tôi luôn bên bạn
             </h2>
             
             <p className="font-['Lato'] text-base text-[#282C2F] leading-relaxed tracking-wide mb-4">
-              Provide your customers a story they would enjoy keeping in mind the objectives of your website. Pay special attention to tone of voice. Try to win the customers' trust by being positive.
+              Tải ứng dụng của chúng tôi để đặt hoa nhanh chóng và nhận nhiều ưu đãi độc quyền. Theo dõi đơn hàng dễ dàng và nhận thông báo về các khuyến mãi mới nhất.
             </p>
             
             <p className="font-['Lato'] text-xl md:text-2xl text-[#282C2F] mb-8">
-              Now available on iOS and Android
+              Có sẵn trên iOS và Android
             </p>
             
-            <Button>Download</Button>
+            <Button>Tải ứng dụng</Button>
           </div>
         </div>
       </div>

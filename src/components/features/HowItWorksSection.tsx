@@ -7,9 +7,9 @@ import { SectionTitle } from '../ui/SectionTitle';
  */
 export const HowItWorksSection: React.FC = () => {
   const steps = [
-    '❉ FIRST step',
-    '❉ SECOND step',
-    '❉ THIRD step',
+    '❉ Bước 1: Chọn hoa yêu thích',
+    '❉ Bước 2: Đặt hàng online',
+    '❉ Bước 3: Nhận hoa tại nhà',
   ];
 
   return (
@@ -29,8 +29,8 @@ export const HowItWorksSection: React.FC = () => {
         {/* Main Title */}
         <div className="text-center mb-8 md:mb-12">
           <SectionTitle
-            title="From handcrafted bouquets to lush floral arrangements"
-            subtitle="A paragraph or two with information on your product/service or description of a problem your product/service is designed to solve."
+            title="Từ những bó hoa thủ công đến các bố cục hoa tươi tốt"
+            subtitle="Chúng tôi cung cấp dịch vụ hoa tươi chất lượng cao với quy trình đặt hàng đơn giản và giao hàng nhanh chóng."
           />
         </div>
 
@@ -58,13 +58,13 @@ export const HowItWorksSection: React.FC = () => {
           {/* Right Side - How It Works */}
           <div className="bg-white/90 p-8 rounded-lg">
             <h3 className="font-['Lato'] text-2xl md:text-[34px] text-[#282C2F] mb-2">
-              How it works
+              Cách hoạt động
             </h3>
             <p className="font-['Lato'] text-xl text-[#737373] mb-4">
-              Subtitle
+              Đơn giản & Nhanh chóng
             </p>
             <p className="font-['Lato'] text-base text-[#737373] leading-relaxed tracking-wide mb-8">
-              Provide your customers a story they would enjoy keeping in mind the objectives of your website.
+              Chỉ với 3 bước đơn giản, bạn sẽ nhận được bó hoa tươi đẹp ngay tại cửa nhà.
             </p>
 
             {/* Steps */}

@@ -66,34 +66,34 @@ const flowerImages = {
 };
 
 const products: Product[] = [
-  // PROMOS Section
-  { id: 1, name: 'Flower 1', price: 13000, originalPrice: 60000, discount: 80, image: flowerImages.rose[0], images: flowerImages.rose, category: 'promo', isNew: true, stock: 15 },
-  { id: 2, name: 'Flower 2', price: 8000, originalPrice: 45000, discount: 85, image: flowerImages.tulip[0], images: flowerImages.tulip, category: 'promo', stock: 20 },
-  { id: 3, name: 'Flower 3', price: 15000, originalPrice: 55000, discount: 75, image: flowerImages.lily[0], images: flowerImages.lily, category: 'promo', isBestseller: true, stock: 8 },
-  { id: 4, name: 'Flower 4', price: 10000, originalPrice: 50000, discount: 80, image: flowerImages.sunflower[0], images: flowerImages.sunflower, category: 'promo', stock: 25 },
+  // Mục KHUYẾN MÃI
+  { id: 1, name: 'Hoa Hồng Đỏ', price: 130000, originalPrice: 600000, discount: 80, image: flowerImages.rose[0], images: flowerImages.rose, category: 'promo', isNew: true, stock: 15 },
+  { id: 2, name: 'Hoa Tulip Hà Lan', price: 80000, originalPrice: 450000, discount: 85, image: flowerImages.tulip[0], images: flowerImages.tulip, category: 'promo', stock: 20 },
+  { id: 3, name: 'Hoa Lily Trắng', price: 150000, originalPrice: 550000, discount: 75, image: flowerImages.lily[0], images: flowerImages.lily, category: 'promo', isBestseller: true, stock: 8 },
+  { id: 4, name: 'Hoa Hướng Dương', price: 100000, originalPrice: 500000, discount: 80, image: flowerImages.sunflower[0], images: flowerImages.sunflower, category: 'promo', stock: 25 },
   
-  // BIG DISCOUNTS Section (80-95% OFF)
-  { id: 5, name: 'Flower 5', price: 3000, originalPrice: 60000, discount: 95, image: flowerImages.daisy[0], images: flowerImages.daisy, category: 'big-discount', stock: 5 },
-  { id: 6, name: 'Flower 6', price: 6000, originalPrice: 50000, discount: 88, image: flowerImages.orchid[0], images: flowerImages.orchid, category: 'big-discount', isNew: true, stock: 12 },
-  { id: 7, name: 'Flower 7', price: 8000, originalPrice: 40000, discount: 80, image: flowerImages.peony[0], images: flowerImages.peony, category: 'big-discount', stock: 18 },
-  { id: 8, name: 'Flower 8', price: 5000, originalPrice: 45000, discount: 89, image: flowerImages.lavender[0], images: flowerImages.lavender, category: 'big-discount', isBestseller: true, stock: 3 },
+  // Mục GIẢM GIÁ LỚN (80-95%)
+  { id: 5, name: 'Hoa Cúc Trắng', price: 30000, originalPrice: 600000, discount: 95, image: flowerImages.daisy[0], images: flowerImages.daisy, category: 'big-discount', stock: 5 },
+  { id: 6, name: 'Hoa Lan Hồ Điệp', price: 60000, originalPrice: 500000, discount: 88, image: flowerImages.orchid[0], images: flowerImages.orchid, category: 'big-discount', isNew: true, stock: 12 },
+  { id: 7, name: 'Hoa Mẫu Đơn', price: 80000, originalPrice: 400000, discount: 80, image: flowerImages.peony[0], images: flowerImages.peony, category: 'big-discount', stock: 18 },
+  { id: 8, name: 'Hoa Oải Hương', price: 50000, originalPrice: 450000, discount: 89, image: flowerImages.lavender[0], images: flowerImages.lavender, category: 'big-discount', isBestseller: true, stock: 3 },
   
-  // FLASH SALE Section (45-75% OFF)
-  { id: 9, name: 'Flower 9', price: 15000, originalPrice: 60000, discount: 75, image: flowerImages.rose[1], images: flowerImages.rose, category: 'flash-sale', stock: 10 },
-  { id: 10, name: 'Flower 10', price: 22000, originalPrice: 40000, discount: 45, image: flowerImages.tulip[1], images: flowerImages.tulip, category: 'flash-sale', isNew: true, stock: 7 },
-  { id: 11, name: 'Flower 11', price: 18000, originalPrice: 55000, discount: 67, image: flowerImages.lily[1], images: flowerImages.lily, category: 'flash-sale', stock: 14 },
-  { id: 12, name: 'Flower 12', price: 12000, originalPrice: 48000, discount: 75, image: flowerImages.sunflower[1], images: flowerImages.sunflower, category: 'flash-sale', isBestseller: true, stock: 6 },
+  // Mục FLASH SALE (45-75%)
+  { id: 9, name: 'Bó Hồng Nhung', price: 150000, originalPrice: 600000, discount: 75, image: flowerImages.rose[1], images: flowerImages.rose, category: 'flash-sale', stock: 10 },
+  { id: 10, name: 'Tulip Nhiều Màu', price: 220000, originalPrice: 400000, discount: 45, image: flowerImages.tulip[1], images: flowerImages.tulip, category: 'flash-sale', isNew: true, stock: 7 },
+  { id: 11, name: 'Lily Vàng', price: 180000, originalPrice: 550000, discount: 67, image: flowerImages.lily[1], images: flowerImages.lily, category: 'flash-sale', stock: 14 },
+  { id: 12, name: 'Hướng Dương Mini', price: 120000, originalPrice: 480000, discount: 75, image: flowerImages.sunflower[1], images: flowerImages.sunflower, category: 'flash-sale', isBestseller: true, stock: 6 },
   
-  // RECOMMENDATION Section
-  { id: 13, name: 'Rose Bouquet', price: 45000, image: flowerImages.rose[2], images: flowerImages.rose, category: 'recommendation', isBestseller: true, stock: 20 },
-  { id: 14, name: 'Tulip Collection', price: 38000, image: flowerImages.tulip[2], images: flowerImages.tulip, category: 'recommendation', isNew: true, stock: 15 },
-  { id: 15, name: 'Lily Arrangement', price: 52000, image: flowerImages.lily[2], images: flowerImages.lily, category: 'recommendation', stock: 12 },
-  { id: 16, name: 'Mixed Flowers', price: 35000, image: flowerImages.peony[2], images: flowerImages.peony, category: 'recommendation', stock: 25 },
+  // Mục GỢI Ý CHO BẠN
+  { id: 13, name: 'Bó Hồng Sang Trọng', price: 450000, image: flowerImages.rose[2], images: flowerImages.rose, category: 'recommendation', isBestseller: true, stock: 20 },
+  { id: 14, name: 'Bộ Sưu Tập Tulip', price: 380000, image: flowerImages.tulip[2], images: flowerImages.tulip, category: 'recommendation', isNew: true, stock: 15 },
+  { id: 15, name: 'Hoa Lily Cắm Lọ', price: 520000, image: flowerImages.lily[2], images: flowerImages.lily, category: 'recommendation', stock: 12 },
+  { id: 16, name: 'Hoa Hỗn Hợp', price: 350000, image: flowerImages.peony[2], images: flowerImages.peony, category: 'recommendation', stock: 25 },
 ];
 
 // ==================== FORMAT HELPERS ====================
 const formatPrice = (price: number): string => {
-  return `Rp ${price.toLocaleString('id-ID')}/stalk`;
+  return `${price.toLocaleString('vi-VN')}đ`;
 };
 
 // ==================== COUNTDOWN TIMER COMPONENT ====================
@@ -238,17 +238,17 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.discount && (
             <span className="bg-[#E85A4F] text-white text-xs font-bold px-2 py-1 rounded-full">
-              {product.discount}% OFF
+              GIẢM {product.discount}%
             </span>
           )}
           {product.isNew && (
             <span className="bg-[#4CAF50] text-white text-xs font-bold px-2 py-1 rounded-full">
-              NEW
+              MỚI
             </span>
           )}
           {product.isBestseller && (
             <span className="bg-[#F9A825] text-white text-xs font-bold px-2 py-1 rounded-full">
-              BEST
+              BÁN CHẠY
             </span>
           )}
         </div>
@@ -257,13 +257,13 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
         {isOutOfStock && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <span className="bg-white text-[#282C2F] font-bold px-4 py-2 rounded-lg">
-              OUT OF STOCK
+              HẾT HÀNG
             </span>
           </div>
         )}
         {isLowStock && !isOutOfStock && (
           <span className="absolute top-3 right-3 bg-[#FF5722] text-white text-xs font-bold px-2 py-1 rounded-full">
-            Only {product.stock} left!
+            Chỉ còn {product.stock}!
           </span>
         )}
       </div>
@@ -303,21 +303,21 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
-              Adding...
+              Đang thêm...
             </>
           ) : showAddedFeedback ? (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              Added!
+              Đã thêm!
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              Add to cart
+              Thêm vào giỏ
             </>
           )}
         </button>
@@ -451,17 +451,17 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
             <div className="flex gap-2 mb-4">
               {product.discount && (
                 <span className="bg-[#E85A4F] text-white text-sm font-bold px-3 py-1 rounded-full">
-                  {product.discount}% OFF
+                  GIẢM {product.discount}%
                 </span>
               )}
               {product.isNew && (
                 <span className="bg-[#4CAF50] text-white text-sm font-bold px-3 py-1 rounded-full">
-                  NEW
+                  MỚI
                 </span>
               )}
               {product.isBestseller && (
                 <span className="bg-[#F9A825] text-white text-sm font-bold px-3 py-1 rounded-full">
-                  BESTSELLER
+                  BÁN CHẠY
                 </span>
               )}
             </div>
@@ -482,23 +482,23 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
             </div>
             
             <p className="text-gray-600 mb-6 flex-grow">
-              Beautiful fresh flowers, perfect for any occasion. Each stalk is carefully selected and arranged to ensure the highest quality.
+              Hoa tươi đẹp, hoàn hảo cho mọi dịp. Mỗi cành hoa được chọn lọc và sắp xếp cẩn thận để đảm bảo chất lượng cao nhất.
             </p>
             
             {/* Stock Status */}
             <div className="mb-6">
               {product.stock > 0 ? (
                 <span className={`text-sm font-medium ${product.stock <= 5 ? 'text-[#FF5722]' : 'text-[#4CAF50]'}`}>
-                  {product.stock <= 5 ? `Only ${product.stock} left in stock!` : `${product.stock} in stock`}
+                  {product.stock <= 5 ? `Chỉ còn ${product.stock} sản phẩm!` : `Còn ${product.stock} sản phẩm`}
                 </span>
               ) : (
-                <span className="text-sm font-medium text-red-500">Out of stock</span>
+                <span className="text-sm font-medium text-red-500">Hết hàng</span>
               )}
             </div>
             
             {/* Quantity Selector */}
             <div className="flex items-center gap-4 mb-6">
-              <span className="font-medium text-[#282C2F]">Quantity:</span>
+              <span className="font-medium text-[#282C2F]">Số lượng:</span>
               <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
                 <button 
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
@@ -535,7 +535,7 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              Add to cart - {formatPrice(product.price * quantity)}
+              Thêm vào giỏ - {formatPrice(product.price * quantity)}
             </button>
           </div>
         </div>
@@ -590,7 +590,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <h2 className="font-['Lora'] text-xl font-bold text-[#282C2F]">
-            Shopping Cart ({totalItems})
+            Giỏ hàng ({totalItems})
           </h2>
           <button 
             onClick={onClose}
@@ -609,7 +609,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
               <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              <p className="text-gray-500">Your cart is empty</p>
+              <p className="text-gray-500">Giỏ hàng trống</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -665,11 +665,11 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
         {cart.length > 0 && (
           <div className="absolute bottom-0 left-0 right-0 p-6 bg-white border-t">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-gray-600">Subtotal:</span>
+              <span className="text-gray-600">Tạm tính:</span>
               <span className="text-xl font-bold text-[#282C2F]">{formatPrice(total)}</span>
             </div>
             <button className="w-full py-4 bg-[#E85A4F] text-white rounded-lg font-semibold hover:bg-[#d14a3f] transition-colors cursor-pointer">
-              Proceed to Checkout
+              Tiến hành thanh toán
             </button>
           </div>
         )}
@@ -742,7 +742,7 @@ const ShopPage = () => {
       }
       return [...prevCart, { ...product, quantity }];
     });
-    showToast(`${product.name} added to cart!`);
+    showToast(`Đã thêm ${product.name} vào giỏ hàng!`);
   };
 
   const handleUpdateCartQuantity = (productId: number, quantity: number) => {
@@ -759,11 +759,11 @@ const ShopPage = () => {
 
   const handleRemoveFromCart = (productId: number) => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
-    showToast('Item removed from cart', 'info');
+    showToast('Đã xóa sản phẩm khỏi giỏ hàng', 'info');
   };
 
   const handleWishlist = (product: Product) => {
-    showToast(`${product.name} wishlist updated!`, 'info');
+    showToast(`Đã cập nhật yêu thích ${product.name}!`, 'info');
   };
 
   const filteredProducts = activeCategory === 'all' 
@@ -776,11 +776,11 @@ const ShopPage = () => {
   const recommendedProducts = products.filter(p => p.category === 'recommendation');
 
   const categories = [
-    { id: 'all', label: 'All Products' },
-    { id: 'promo', label: 'Promos' },
-    { id: 'big-discount', label: 'Big Discounts' },
+    { id: 'all', label: 'Tất cả sản phẩm' },
+    { id: 'promo', label: 'Khuyến mãi' },
+    { id: 'big-discount', label: 'Giảm giá lớn' },
     { id: 'flash-sale', label: 'Flash Sale' },
-    { id: 'recommendation', label: 'Recommended' },
+    { id: 'recommendation', label: 'Gợi ý cho bạn' },
   ];
 
   const cartItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -796,16 +796,16 @@ const ShopPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-['Lora'] text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
-              WELCOME TO NATNAT FLOWER SHOP
+              CHÀO MỮNG ĐẾN NATNAT FLOWER SHOP
             </h1>
             <p className="text-xl text-white/80 mb-8">
-              Discover our beautiful collection of fresh flowers for every occasion
+              Khám phá bộ sưu tập hoa tươi đẹp cho mọi dịp
             </p>
             <Link 
               to="#products" 
               className="inline-flex items-center gap-2 bg-[#E85A4F] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#E85A4F] transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
             >
-              Shop Now
+              Mua ngay
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -858,13 +858,13 @@ const ShopPage = () => {
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F]">
-                  🎉 PROMOS
+                  🎉 KHUYẾN MÃI
                 </h2>
                 <button 
                   onClick={() => setActiveCategory('promo')}
                   className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
                 >
-                  View All →
+                  Xem tất cả →
                 </button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -887,15 +887,15 @@ const ShopPage = () => {
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F]">
-                    🔥 BIG DISCOUNTS
+                    🔥 GIẢM GIÁ LỚN
                   </h2>
-                  <p className="text-gray-600 mt-2">Up to 95% OFF on selected items!</p>
+                  <p className="text-gray-600 mt-2">Giảm đến 95% cho các sản phẩm được chọn!</p>
                 </div>
                 <button 
                   onClick={() => setActiveCategory('big-discount')}
                   className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
                 >
-                  View All →
+                  Xem tất cả →
                 </button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -920,10 +920,10 @@ const ShopPage = () => {
                   <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold flex items-center gap-3">
                     ⚡ FLASH SALE
                   </h2>
-                  <p className="text-white/70 mt-2">Hurry! These deals won't last long!</p>
+                  <p className="text-white/70 mt-2">Nhanh tay! Các ưu đãi sẽ kết thúc sớm!</p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-white/70">Ends in:</span>
+                  <span className="text-white/70">Kết thúc trong:</span>
                   <CountdownTimer targetDate={flashSaleEnd} />
                 </div>
               </div>
@@ -947,15 +947,15 @@ const ShopPage = () => {
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F]">
-                    ✨ RECOMMENDATION
+                    ✨ GỢI Ý CHO BẠN
                   </h2>
-                  <p className="text-gray-600 mt-2">Hand-picked favorites just for you</p>
+                  <p className="text-gray-600 mt-2">Những sản phẩm được chọn riêng cho bạn</p>
                 </div>
                 <button 
                   onClick={() => setActiveCategory('recommendation')}
                   className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
                 >
-                  View All →
+                  Xem tất cả →
                 </button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -977,14 +977,14 @@ const ShopPage = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F] mb-8 capitalize">
-              {activeCategory === 'big-discount' ? '🔥 Big Discounts' : 
+              {activeCategory === 'big-discount' ? '🔥 Giảm Giá Lớn' : 
                activeCategory === 'flash-sale' ? '⚡ Flash Sale' :
-               activeCategory === 'promo' ? '🎉 Promos' :
-               activeCategory === 'recommendation' ? '✨ Recommendations' : activeCategory}
+               activeCategory === 'promo' ? '🎉 Khuyến Mãi' :
+               activeCategory === 'recommendation' ? '✨ Gợi Ý Cho Bạn' : activeCategory}
             </h2>
             {activeCategory === 'flash-sale' && (
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-gray-600">Flash Sale ends in:</span>
+                <span className="text-gray-600">Flash Sale kết thúc trong:</span>
                 <CountdownTimer targetDate={flashSaleEnd} />
               </div>
             )}
@@ -1001,7 +1001,7 @@ const ShopPage = () => {
             </div>
             {filteredProducts.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No products found in this category.</p>
+                <p className="text-gray-500 text-lg">Không tìm thấy sản phẩm nào trong danh mục này.</p>
               </div>
             )}
           </div>
@@ -1013,22 +1013,22 @@ const ShopPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold mb-4">
-              Subscribe for Special Offers
+              Đăng ký nhận ưu đãi đặc biệt
             </h2>
             <p className="text-white/90 mb-8">
-              Get exclusive discounts and be the first to know about our new arrivals!
+              Nhận giảm giá độc quyền và là người đầu tiên biết về sản phẩm mới!
             </p>
             <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input 
                 type="email" 
-                placeholder="Enter your email"
+                placeholder="Nhập email của bạn"
                 className="flex-1 px-6 py-4 rounded-full text-[#282C2F] focus:outline-none focus:ring-4 focus:ring-white/30"
               />
               <button 
                 type="submit"
                 className="px-8 py-4 bg-[#282C2F] text-white rounded-full font-semibold hover:bg-white hover:text-[#282C2F] transition-colors cursor-pointer"
               >
-                Subscribe
+                Đăng ký
               </button>
             </form>
           </div>

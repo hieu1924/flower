@@ -10,23 +10,23 @@ export const BestsellersSection: React.FC = () => {
   const products = [
     {
       image: '/images/product-1.png',
-      name: 'Tootsie',
-      price: 139,
+      name: 'Hoa Hồng Đỏ',
+      price: 139000,
     },
     {
       image: '/images/product-2.png',
-      name: 'Emily',
-      price: 82,
+      name: 'Hoa Tulip',
+      price: 82000,
     },
     {
       image: '/images/product-3.png',
-      name: 'Sun & Sea',
-      price: 144,
+      name: 'Bó Biển Vàng',
+      price: 144000,
     },
     {
       image: '/images/product-4.png',
-      name: 'Coral Sunset',
-      price: 67,
+      name: 'Hoa Hồng Cam',
+      price: 67000,
     },
   ];
 
@@ -36,7 +36,7 @@ export const BestsellersSection: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-['Lora'] text-2xl md:text-3xl lg:text-5xl text-[#282C2F]">
-            Our Bestsellers
+            Sản phẩm bán chạy
           </h2>
         </div>
 
@@ -54,7 +54,7 @@ export const BestsellersSection: React.FC = () => {
 
         {/* CTA Button */}
         <div className="text-center">
-          <Button>Buy Now</Button>
+          <Button>Mua ngay</Button>
         </div>
       </div>
     </section>

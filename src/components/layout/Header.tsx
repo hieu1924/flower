@@ -12,11 +12,11 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const navItems = [
-    { label: 'FEATURES', href: '#features' },
-    { label: 'HOW IT WORKS', href: '#how-it-works' },
-    { label: 'BESTSELLERS', href: '#bestsellers' },
-    { label: 'REVIEWS', href: '#reviews' },
-    { label: 'ABOUT US', href: '#about' },
+    { label: 'TÍNH NĂNG', href: '#features' },
+    { label: 'CÁCH HOẠT ĐỘNG', href: '#how-it-works' },
+    { label: 'BÁN CHẠY', href: '#bestsellers' },
+    { label: 'ĐÁNH GIÁ', href: '#reviews' },
+    { label: 'VỀ CHÚNG TÔI', href: '#about' },
   ];
   
   return (
@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
       {/* Top Banner */}
       <div className="bg-[#282C2F] py-1">
         <p className="text-center text-white text-xs md:text-sm font-medium tracking-wide">
-          ENJOY FREE SHIPPING ON ORDERS OF $50+
+          MIỄN PHÍ VẬN CHUYỂN CHO ĐƠN HÀNG TỪ 500.000đ
         </p>
       </div>
       
@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
             <div className="flex items-center gap-4">
               <Link to="/shop" className="hidden md:inline-flex">
                 <Button size="sm">
-                  Shop Now
+                  Mua ngay
                 </Button>
               </Link>
               
@@ -109,7 +109,7 @@ export const Header: React.FC = () => {
               <div className="pt-4">
                 <Link to="/shop" className="block">
                   <Button size="sm" className="w-full">
-                    Shop Now
+                    Mua ngay
                   </Button>
                 </Link>
               </div>

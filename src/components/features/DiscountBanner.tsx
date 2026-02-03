@@ -20,10 +20,10 @@ export const DiscountBanner: React.FC = () => {
       
       <div className="relative z-10 container-fluid text-center">
         <h2 className="font-['Lora'] text-2xl md:text-4xl lg:text-5xl text-[#282C2F] mb-8 max-w-2xl mx-auto leading-tight">
-          Order now and get a 15% delivery discount
+          Đặt hàng ngay và nhận giảm 15% phí giao hàng
         </h2>
         
-        <Button>Buy Now</Button>
+        <Button>Mua ngay</Button>
       </div>
     </section>
   );

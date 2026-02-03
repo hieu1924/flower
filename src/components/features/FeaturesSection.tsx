@@ -9,18 +9,18 @@ export const FeaturesSection: React.FC = () => {
   const features = [
     {
       icon: '/images/flower-feature-1.png',
-      title: 'First feature',
-      description: 'Short text describing one of your product or service features.',
+      title: 'Hoa tươi mỗi ngày',
+      description: 'Chúng tôi chỉ sử dụng hoa tươi được nhập về hàng ngày.',
     },
     {
       icon: '/images/flower-feature-2.png',
-      title: 'Second feature',
-      description: 'Short text describing one of your product or service features.',
+      title: 'Giao hàng nhanh',
+      description: 'Giao hàng trong ngày cho các đơn hàng nội thành.',
     },
     {
       icon: '/images/flower-feature-3.png',
-      title: 'Third feature',
-      description: 'Short text describing one of your product or service features.',
+      title: 'Giá cả hợp lý',
+      description: 'Chất lượng cao với giá cả phải chăng cho mọi người.',
     },
   ];
 
@@ -30,9 +30,9 @@ export const FeaturesSection: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-['Lato'] text-2xl md:text-3xl lg:text-[34px] text-[#282C2F] leading-tight tracking-wide">
-            Plants and flowers are our specialty.{' '}
+            Hoa và cây cảnh là chuyên môn của chúng tôi.{' '}
             <br className="hidden md:block" />
-            We make it reasonable.
+            Chúng tôi mang đến giá cả hợp lý.
           </h2>
         </div>
 

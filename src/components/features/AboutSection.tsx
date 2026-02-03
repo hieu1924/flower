@@ -7,16 +7,16 @@ import React from 'react';
 export const AboutSection: React.FC = () => {
   const sections = [
     {
-      title: 'Who we are',
-      content: 'A paragraph or two with information on your product/service or describes a problem your product/service is designed to solve. Provide your customers a story they would enjoy keeping in mind the objectives of your website. Pay special attention to the tone of voice. Try to win the customers\' trust by being positive.',
+      title: 'Chúng tôi là ai',
+      content: 'NatNat Flower Shop là cửa hàng hoa tươi uy tín hàng đầu tại Việt Nam. Chúng tôi cam kết mang đến những bó hoa tươi đẹp nhất, được chọn lọc kỹ lưỡng từ những nhà vườn uy tín. Mỗi sản phẩm đều được tạo ra với tình yêu và sự tận tâm.',
       image: '/images/about-1.png',
-      link: 'See our promise',
+      link: 'Xem cam kết của chúng tôi',
     },
     {
-      title: 'What we do',
-      content: 'A paragraph or two with information on your product/service or describes a problem your product/service is designed to solve. Provide your customers a story they would enjoy keeping in mind the objectives of your website. Pay special attention to the tone of voice. Try to win the customers\' trust by being positive.',
+      title: 'Chúng tôi làm gì',
+      content: 'Chúng tôi chuyên cung cấp các dịch vụ hoa tươi cho mọi dịp: sinh nhật, cưới hỏi, khai trương, chia buồn, và các dịp đặc biệt khác. Đội ngũ florist chuyên nghiệp sẽ giúp bạn tạo nên những bó hoa ấn tượng nhất.',
       image: '/images/about-2.png',
-      link: 'See our promise',
+      link: 'Xem cam kết của chúng tôi',
     },
   ];
 

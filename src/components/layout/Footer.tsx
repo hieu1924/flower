@@ -28,20 +28,20 @@ export const Footer: React.FC = () => {
               href="#privacy" 
               className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
             >
-              Privacy policy
+              Chính sách bảo mật
             </a>
             <span className="hidden md:block text-white/40">|</span>
             <a 
               href="#terms" 
               className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
             >
-              Terms and Conditions
+              Điều khoản sử dụng
             </a>
           </div>
           
           {/* Copyright */}
           <p className="font-['Inter'] text-sm text-white/80">
-            © 2021 Copyright
+            © 2026 Bản quyền thuộc NatNat Flower Shop
           </p>
         </div>
       </div>

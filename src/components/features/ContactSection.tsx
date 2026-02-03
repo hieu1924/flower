@@ -20,10 +20,10 @@ export const ContactSection: React.FC = () => {
       
       <div className="relative z-10 container-fluid text-center">
         <h2 className="font-['Lora'] text-2xl md:text-4xl text-[#282C2F] mb-8 max-w-md mx-auto leading-snug">
-          Contact us if you have any questions
+          Liên hệ với chúng tôi nếu bạn có bất kỳ câu hỏi nào
         </h2>
         
-        <Button>Contact</Button>
+        <Button>Liên hệ</Button>
       </div>
     </section>
   );

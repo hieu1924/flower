@@ -20,7 +20,7 @@ export const InstagramSection: React.FC = () => {
         {/* Section Title */}
         <div className="text-center mb-8">
           <h2 className="font-['Lora'] text-2xl md:text-4xl text-[#282C2F] mb-2">
-            Follow us on Instagram
+            Theo dõi chúng tôi trên Instagram
           </h2>
           <a 
             href="https://instagram.com/flowerlab17" 

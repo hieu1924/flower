@@ -37,7 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {name}
         </h3>
         <p className="font-['Lato'] font-semibold text-lg text-[#737373] tracking-wide">
-          ${price}
+          {price.toLocaleString('vi-VN')}đ
         </p>
       </div>
     </div>
