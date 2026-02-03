@@ -50,17 +50,20 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   const formatTime = (num: number): string => num.toString().padStart(2, '0');
 
   return (
-    <div className="flex items-center gap-1 font-mono text-2xl font-bold text-[#E85A4F]">
-      <div className="bg-[#282C2F] text-white px-3 py-2 rounded-lg min-w-[50px] text-center">
-        {formatTime(timeLeft.hours)}
+    <div className="flex items-center gap-2 font-mono text-xl md:text-2xl font-bold">
+      <div className="bg-gradient-to-br from-[#E85A4F] to-[#d14a3f] text-white px-3 md:px-4 py-2 md:py-3 rounded-xl min-w-[48px] md:min-w-[56px] text-center shadow-lg shadow-[#E85A4F]/30">
+        <span className="block">{formatTime(timeLeft.hours)}</span>
+        <span className="text-[10px] font-normal opacity-80">giờ</span>
       </div>
-      <span className="text-[#282C2F]">:</span>
-      <div className="bg-[#282C2F] text-white px-3 py-2 rounded-lg min-w-[50px] text-center">
-        {formatTime(timeLeft.minutes)}
+      <span className="text-white text-2xl animate-pulse">:</span>
+      <div className="bg-gradient-to-br from-[#E85A4F] to-[#d14a3f] text-white px-3 md:px-4 py-2 md:py-3 rounded-xl min-w-[48px] md:min-w-[56px] text-center shadow-lg shadow-[#E85A4F]/30">
+        <span className="block">{formatTime(timeLeft.minutes)}</span>
+        <span className="text-[10px] font-normal opacity-80">phút</span>
       </div>
-      <span className="text-[#282C2F]">:</span>
-      <div className="bg-[#282C2F] text-white px-3 py-2 rounded-lg min-w-[50px] text-center">
-        {formatTime(timeLeft.seconds)}
+      <span className="text-white text-2xl animate-pulse">:</span>
+      <div className="bg-gradient-to-br from-[#E85A4F] to-[#d14a3f] text-white px-3 md:px-4 py-2 md:py-3 rounded-xl min-w-[48px] md:min-w-[56px] text-center shadow-lg shadow-[#E85A4F]/30">
+        <span className="block">{formatTime(timeLeft.seconds)}</span>
+        <span className="text-[10px] font-normal opacity-80">giây</span>
       </div>
     </div>
   );
@@ -102,8 +105,8 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
 
   return (
     <div 
-      className={`group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 ${
-        isHovered ? 'transform -translate-y-2' : ''
+      className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 ${
+        isHovered ? 'transform -translate-y-3 scale-[1.02]' : ''
       } ${isOutOfStock ? 'opacity-75' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -717,28 +720,50 @@ const ShopPage = () => {
   return (
     <div className="min-h-screen bg-[#F5F1ED]">
       {/* Hero Banner */}
-      <section className="relative bg-gradient-to-r from-[#282C2F] to-[#3d4347] text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-40 h-40 bg-[#E85A4F] rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-60 h-60 bg-white rounded-full blur-3xl" />
+      <section className="relative bg-gradient-to-br from-[#1a1d1f] via-[#282C2F] to-[#3d4347] text-white py-24 md:py-32 overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#E85A4F] rounded-full blur-[120px] opacity-20" />
+          <div className="absolute bottom-10 right-20 w-96 h-96 bg-pink-400 rounded-full blur-[150px] opacity-15" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-[#E85A4F]/10 to-purple-500/10 rounded-full blur-3xl" />
         </div>
+        
+        {/* Floating Flowers Decoration */}
+        <div className="absolute top-10 right-10 text-6xl opacity-20 animate-bounce" style={{animationDuration: '3s'}}>🌸</div>
+        <div className="absolute bottom-20 left-20 text-5xl opacity-20 animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}>🌺</div>
+        <div className="absolute top-1/2 right-1/4 text-4xl opacity-15 animate-bounce" style={{animationDuration: '5s', animationDelay: '2s'}}>🌷</div>
+        
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-['Lora'] text-4xl md:text-6xl font-bold mb-6 animate-fadeIn">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-white/20">
+              ✨ Miễn phí vận chuyển đơn từ 500.000đ
+            </span>
+            <h1 className="font-['Lora'] text-4xl md:text-5xl lg:text-7xl font-bold mb-6 animate-fadeIn leading-tight">
               {siteContent?.shop?.heroTitle || 'CHÀO MỪNG ĐẾN NATNAT FLOWER SHOP'}
             </h1>
-            <p className="text-xl text-white/80 mb-8">
+            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto">
               {siteContent?.shop?.heroSubtitle || 'Khám phá bộ sưu tập hoa tươi đẹp cho mọi dịp'}
             </p>
-            <Link 
-              to="#products" 
-              className="inline-flex items-center gap-2 bg-[#E85A4F] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#E85A4F] transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
-            >
-              {siteContent?.shop?.ctaText || 'Mua ngay'}
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="#products" 
+                className="inline-flex items-center justify-center gap-2 bg-[#E85A4F] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#E85A4F] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 cursor-pointer"
+              >
+                {siteContent?.shop?.ctaText || 'Mua ngay'}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link 
+                to="/" 
+                className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 cursor-pointer"
+              >
+                Trang chủ
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -759,19 +784,23 @@ const ShopPage = () => {
       </button>
 
       {/* Category Filter */}
-      <section id="products" className="py-8 bg-white sticky top-0 z-20 shadow-sm">
+      <section id="products" className="py-6 bg-white/95 backdrop-blur-md sticky top-0 z-20 shadow-md border-b border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-3 flex-wrap">
+          <div className="flex items-center justify-center gap-2 md:gap-3 flex-wrap">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer ${
+                className={`px-5 md:px-6 py-2.5 md:py-3 rounded-full font-medium text-sm md:text-base transition-all duration-300 cursor-pointer transform hover:scale-105 ${
                   activeCategory === cat.id
-                    ? 'bg-[#E85A4F] text-white shadow-lg'
-                    : 'bg-[#F5F1ED] text-[#282C2F] hover:bg-[#282C2F] hover:text-white'
+                    ? 'bg-gradient-to-r from-[#E85A4F] to-[#d14a3f] text-white shadow-lg shadow-[#E85A4F]/30'
+                    : 'bg-[#F5F1ED] text-[#282C2F] hover:bg-[#282C2F] hover:text-white hover:shadow-md'
                 }`}
               >
+                {cat.id === 'promo' && '🎉 '}
+                {cat.id === 'big-discount' && '🔥 '}
+                {cat.id === 'flash-sale' && '⚡ '}
+                {cat.id === 'recommendation' && '✨ '}
                 {cat.label}
               </button>
             ))}
@@ -783,20 +812,26 @@ const ShopPage = () => {
       {activeCategory === 'all' ? (
         <>
           {/* PROMOS Section */}
-          <section className="py-16">
+          <section className="py-16 bg-gradient-to-b from-[#F5F1ED] to-white">
             <div className="container mx-auto px-4">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F]">
-                  🎉 KHUYẾN MÃI
-                </h2>
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-4">
+                <div>
+                  <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F] flex items-center gap-3">
+                    <span className="text-4xl">🎉</span> KHUYẾN MÃI
+                  </h2>
+                  <p className="text-gray-600 mt-2">Ưu đãi hấp dẫn dành cho bạn</p>
+                </div>
                 <button 
                   onClick={() => setActiveCategory('promo')}
-                  className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#282C2F] text-white rounded-full font-medium hover:bg-[#E85A4F] transition-all cursor-pointer group"
                 >
-                  Xem tất cả →
+                  Xem tất cả
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {promoProducts.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -811,23 +846,33 @@ const ShopPage = () => {
           </section>
 
           {/* BIG DISCOUNTS Section */}
-          <section className="py-16 bg-gradient-to-r from-[#E85A4F]/10 to-[#F9A825]/10">
-            <div className="container mx-auto px-4">
-              <div className="flex items-center justify-between mb-8">
+          <section className="py-16 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#E85A4F]/5 via-[#F9A825]/10 to-[#E85A4F]/5" />
+            
+            <div className="container mx-auto px-4 relative z-10">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-4">
                 <div>
-                  <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F]">
-                    🔥 GIẢM GIÁ LỚN
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E85A4F]/10 rounded-full mb-3">
+                    <span className="w-2 h-2 bg-[#E85A4F] rounded-full animate-pulse" />
+                    <span className="text-[#E85A4F] font-semibold text-sm">HOT DEAL</span>
+                  </div>
+                  <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F] flex items-center gap-3">
+                    <span className="text-4xl">🔥</span> GIẢM GIÁ LỚN
                   </h2>
                   <p className="text-gray-600 mt-2">Giảm đến 95% cho các sản phẩm được chọn!</p>
                 </div>
                 <button 
                   onClick={() => setActiveCategory('big-discount')}
-                  className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#E85A4F] to-[#d14a3f] text-white rounded-full font-medium hover:shadow-lg hover:shadow-[#E85A4F]/30 transition-all cursor-pointer group"
                 >
-                  Xem tất cả →
+                  Xem tất cả
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {bigDiscountProducts.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -842,21 +887,31 @@ const ShopPage = () => {
           </section>
 
           {/* FLASH SALE Section */}
-          <section className="py-16 bg-[#282C2F] text-white">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-                <div>
-                  <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold flex items-center gap-3">
+          <section className="py-16 bg-gradient-to-br from-[#1a1d1f] via-[#282C2F] to-[#3d4347] text-white relative overflow-hidden">
+            {/* Animated Background */}
+            <div className="absolute inset-0">
+              <div className="absolute top-0 left-1/4 w-64 h-64 bg-[#E85A4F] rounded-full blur-[120px] opacity-20 animate-pulse" />
+              <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-yellow-500 rounded-full blur-[150px] opacity-15 animate-pulse" style={{animationDelay: '1s'}} />
+            </div>
+            
+            <div className="container mx-auto px-4 relative z-10">
+              <div className="flex flex-col lg:flex-row items-center justify-between mb-10 gap-6">
+                <div className="text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E85A4F]/20 rounded-full mb-3 backdrop-blur-sm">
+                    <span className="text-xl">⚡</span>
+                    <span className="text-[#E85A4F] font-bold text-sm uppercase tracking-wider">Flash Sale</span>
+                  </div>
+                  <h2 className="font-['Lora'] text-3xl md:text-4xl lg:text-5xl font-bold flex items-center justify-center lg:justify-start gap-3">
                     ⚡ FLASH SALE
                   </h2>
-                  <p className="text-white/70 mt-2">Nhanh tay! Các ưu đãi sẽ kết thúc sớm!</p>
+                  <p className="text-white/70 mt-3 text-lg">Nhanh tay! Các ưu đãi sẽ kết thúc sớm!</p>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-white/70">Kết thúc trong:</span>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="text-white/70 text-sm uppercase tracking-wider">Kết thúc trong</span>
                   <CountdownTimer targetDate={flashSaleEnd} />
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {flashSaleProducts.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -871,23 +926,30 @@ const ShopPage = () => {
           </section>
 
           {/* RECOMMENDATION Section */}
-          <section className="py-16">
+          <section className="py-16 bg-gradient-to-b from-white to-[#F5F1ED]">
             <div className="container mx-auto px-4">
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-4">
                 <div>
-                  <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F]">
-                    ✨ GỢI Ý CHO BẠN
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-3">
+                    <span className="text-xl">✨</span>
+                    <span className="text-purple-600 font-semibold text-sm">DÀNH CHO BẠN</span>
+                  </div>
+                  <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold text-[#282C2F] flex items-center gap-3">
+                    <span className="text-4xl">✨</span> GỢI Ý CHO BẠN
                   </h2>
                   <p className="text-gray-600 mt-2">Những sản phẩm được chọn riêng cho bạn</p>
                 </div>
                 <button 
                   onClick={() => setActiveCategory('recommendation')}
-                  className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 hover:shadow-lg transition-all cursor-pointer group"
                 >
-                  Xem tất cả →
+                  Xem tất cả
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {recommendedProducts.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -938,24 +1000,33 @@ const ShopPage = () => {
       )}
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-gradient-to-r from-[#E85A4F] to-[#d14a3f] text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-[#E85A4F] via-[#d14a3f] to-[#c13a30] text-white relative overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-black/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-['Lora'] text-3xl md:text-4xl font-bold mb-4">
+            <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+              📧 Đăng ký ngay
+            </span>
+            <h2 className="font-['Lora'] text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               {siteContent?.newsletter?.title || 'Đăng ký nhận ưu đãi đặc biệt'}
             </h2>
-            <p className="text-white/90 mb-8">
+            <p className="text-white/90 mb-10 text-lg">
               {siteContent?.newsletter?.subtitle || 'Nhận giảm giá độc quyền và là người đầu tiên biết về sản phẩm mới!'}
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <input 
                 type="email" 
                 placeholder={siteContent?.newsletter?.placeholder || 'Nhập email của bạn'}
-                className="flex-1 px-6 py-4 rounded-full text-[#282C2F] focus:outline-none focus:ring-4 focus:ring-white/30"
+                className="flex-1 px-6 py-4 rounded-full text-[#282C2F] focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg"
               />
               <button 
                 type="submit"
-                className="px-8 py-4 bg-[#282C2F] text-white rounded-full font-semibold hover:bg-white hover:text-[#282C2F] transition-colors cursor-pointer"
+                className="px-8 py-4 bg-[#282C2F] text-white rounded-full font-semibold hover:bg-white hover:text-[#282C2F] transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 {siteContent?.newsletter?.ctaText || 'Đăng ký'}
               </button>

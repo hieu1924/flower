@@ -48,27 +48,32 @@ function useData<T>(
   const [error, setError] = useState<Error | null>(null);
 
   const fetchData = useCallback(async () => {
+    console.log('[useData] Checking API status...');
     if (!isApiEnabled()) {
+      console.log('[useData] API disabled, using fallback');
       setLoading(false);
       return;
     }
 
+    console.log('[useData] API enabled, fetching data...');
     setLoading(true);
     setError(null);
 
     try {
       const result = await fetcher();
+      console.log('[useData] Fetched result:', result);
       if (result !== null && result !== undefined) {
         const hasData = Array.isArray(result) 
           ? result.length > 0 
           : typeof result === 'object' && Object.keys(result as object).length > 0;
         if (hasData) {
+          console.log('[useData] Setting data from API');
           setData(result);
         }
       }
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Unknown error'));
-      console.error('Failed to fetch data:', err);
+      console.error('[useData] Failed to fetch data:', err);
     } finally {
       setLoading(false);
     }

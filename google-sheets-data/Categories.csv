@@ -1,0 +1,6 @@
+id,label,displayOrder
+all,Tất cả sản phẩm,0
+promo,Khuyến mãi,1
+big-discount,Giảm giá lớn,2
+flash-sale,Flash Sale,3
+recommendation,Gợi ý cho bạn,4

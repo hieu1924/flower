@@ -94,30 +94,34 @@ async function fetchFromAPI<T>(action: string): Promise<T | null> {
   // Check memory cache first
   const memCached = getFromCache<T>(action);
   if (memCached) {
+    console.log(`[SheetsAPI] Using memory cache for: ${action}`);
     return memCached;
   }
   
   // Check localStorage cache
   const lsCached = getFromLocalStorage<T>(action);
   if (lsCached) {
+    console.log(`[SheetsAPI] Using localStorage cache for: ${action}`);
     setCache(action, lsCached); // Restore to memory cache
     return lsCached;
   }
   
   try {
     const url = `${API_URL}?action=${action}`;
+    console.log(`[SheetsAPI] Fetching: ${url}`);
     const response = await fetch(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      redirect: 'follow', // Important for Google Apps Script
     });
+    
+    console.log(`[SheetsAPI] Response status: ${response.status}`);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
     const result: SheetsApiResponse<T> = await response.json();
+    console.log(`[SheetsAPI] Result for ${action}:`, result);
     
     if (!result.success) {
       throw new Error(result.error || 'Unknown API error');
@@ -130,7 +134,7 @@ async function fetchFromAPI<T>(action: string): Promise<T | null> {
     
     return result.data || null;
   } catch (error) {
-    console.error(`Failed to fetch ${action} from Sheets API:`, error);
+    console.error(`[SheetsAPI] Failed to fetch ${action}:`, error);
     return null;
   }
 }
@@ -241,5 +245,7 @@ export function clearCache(): void {
  * Check if API is configured and enabled
  */
 export function isApiEnabled(): boolean {
-  return USE_API && !!API_URL;
+  const enabled = USE_API && !!API_URL;
+  console.log('[SheetsAPI] isApiEnabled:', enabled, '| USE_API:', USE_API, '| API_URL:', API_URL ? 'SET' : 'NOT SET');
+  return enabled;
 }
