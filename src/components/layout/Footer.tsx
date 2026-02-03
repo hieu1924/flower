@@ -26,14 +26,14 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8">
             <a 
               href="#privacy" 
-              className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors"
+              className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
             >
               Privacy policy
             </a>
             <span className="hidden md:block text-white/40">|</span>
             <a 
               href="#terms" 
-              className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors"
+              className="font-['Inter'] text-sm text-white/80 hover:text-white transition-colors cursor-pointer"
             >
               Terms and Conditions
             </a>

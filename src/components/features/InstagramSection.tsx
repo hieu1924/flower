@@ -26,7 +26,7 @@ export const InstagramSection: React.FC = () => {
             href="https://instagram.com/flowerlab17" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="font-['Lato'] text-lg md:text-xl text-[#737373] hover:text-[#282C2F]"
+            className="font-['Lato'] text-lg md:text-xl text-[#737373] hover:text-[#282C2F] cursor-pointer"
           >
             @flowerlab17
           </a>
@@ -40,7 +40,7 @@ export const InstagramSection: React.FC = () => {
               href="https://instagram.com/flowerlab17"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative overflow-hidden aspect-square group"
+              className="relative overflow-hidden aspect-square group cursor-pointer"
             >
               <img
                 src={image}

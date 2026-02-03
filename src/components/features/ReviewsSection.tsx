@@ -1,5 +1,4 @@
 import React from 'react';
-import { TestimonialCard } from '../ui/TestimonialCard';
 
 /**
  * Reviews/Testimonials Section
@@ -61,8 +60,8 @@ export const ReviewsSection: React.FC = () => {
 
         {/* Navigation Arrows (Desktop) */}
         <div className="hidden lg:flex justify-center gap-4 mt-8">
-          <button className="w-16 h-0.5 bg-[#282C2F]" aria-label="Previous" />
-          <button className="w-16 h-0.5 bg-[#282C2F]" aria-label="Next" />
+          <button className="w-16 h-0.5 bg-[#282C2F] cursor-pointer hover:bg-[#E85A4F] transition-colors" aria-label="Previous" />
+          <button className="w-16 h-0.5 bg-[#282C2F] cursor-pointer hover:bg-[#E85A4F] transition-colors" aria-label="Next" />
         </div>
       </div>
     </section>

@@ -9,6 +9,7 @@ interface Product {
   originalPrice?: number;
   discount?: number;
   image: string;
+  images: string[]; // Multiple images for gallery
   category: 'promo' | 'big-discount' | 'flash-sale' | 'recommendation';
   isNew?: boolean;
   isBestseller?: boolean;
@@ -20,30 +21,74 @@ interface CartItem extends Product {
 }
 
 // ==================== PRODUCT DATA (Based on Figma) ====================
+// Using real flower images from Unsplash
+const flowerImages = {
+  rose: [
+    'https://images.unsplash.com/photo-1518882605630-8eb92f79670c?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400&h=400&fit=crop',
+  ],
+  tulip: [
+    'https://images.unsplash.com/photo-1520763185298-1b434c919102?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1589994160839-163cd867cfe8?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=400&h=400&fit=crop',
+  ],
+  lily: [
+    'https://images.unsplash.com/photo-1530092285049-1c42085fd395?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1560717799-68c97d7c7b6b?w=400&h=400&fit=crop',
+  ],
+  sunflower: [
+    'https://images.unsplash.com/photo-1551731409-43eb3e517a1a?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1598751528584-cc23a0872c53?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1470509037663-253afd7f0f51?w=400&h=400&fit=crop',
+  ],
+  daisy: [
+    'https://images.unsplash.com/photo-1568236179845-e1bd7e58e96e?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=400&h=400&fit=crop',
+  ],
+  orchid: [
+    'https://images.unsplash.com/photo-1585664812212-f0a5e7a5fb86?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1567696911980-2c669aad8fd9?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1610397648930-477b8c7f0943?w=400&h=400&fit=crop',
+  ],
+  peony: [
+    'https://images.unsplash.com/photo-1558652093-9391c98f6a79?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1560882741-5c3e028f6265?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?w=400&h=400&fit=crop',
+  ],
+  lavender: [
+    'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1532925547908-a2769e0b9c45?w=400&h=400&fit=crop',
+    'https://images.unsplash.com/photo-1595236108826-d802f3951d51?w=400&h=400&fit=crop',
+  ],
+};
+
 const products: Product[] = [
   // PROMOS Section
-  { id: 1, name: 'Flower 1', price: 13000, originalPrice: 60000, discount: 80, image: '/images/flower-1.jpg', category: 'promo', isNew: true, stock: 15 },
-  { id: 2, name: 'Flower 2', price: 8000, originalPrice: 45000, discount: 85, image: '/images/flower-2.jpg', category: 'promo', stock: 20 },
-  { id: 3, name: 'Flower 3', price: 15000, originalPrice: 55000, discount: 75, image: '/images/flower-3.jpg', category: 'promo', isBestseller: true, stock: 8 },
-  { id: 4, name: 'Flower 4', price: 10000, originalPrice: 50000, discount: 80, image: '/images/flower-4.jpg', category: 'promo', stock: 25 },
+  { id: 1, name: 'Flower 1', price: 13000, originalPrice: 60000, discount: 80, image: flowerImages.rose[0], images: flowerImages.rose, category: 'promo', isNew: true, stock: 15 },
+  { id: 2, name: 'Flower 2', price: 8000, originalPrice: 45000, discount: 85, image: flowerImages.tulip[0], images: flowerImages.tulip, category: 'promo', stock: 20 },
+  { id: 3, name: 'Flower 3', price: 15000, originalPrice: 55000, discount: 75, image: flowerImages.lily[0], images: flowerImages.lily, category: 'promo', isBestseller: true, stock: 8 },
+  { id: 4, name: 'Flower 4', price: 10000, originalPrice: 50000, discount: 80, image: flowerImages.sunflower[0], images: flowerImages.sunflower, category: 'promo', stock: 25 },
   
   // BIG DISCOUNTS Section (80-95% OFF)
-  { id: 5, name: 'Flower 5', price: 3000, originalPrice: 60000, discount: 95, image: '/images/flower-5.jpg', category: 'big-discount', stock: 5 },
-  { id: 6, name: 'Flower 6', price: 6000, originalPrice: 50000, discount: 88, image: '/images/flower-6.jpg', category: 'big-discount', isNew: true, stock: 12 },
-  { id: 7, name: 'Flower 7', price: 8000, originalPrice: 40000, discount: 80, image: '/images/flower-7.jpg', category: 'big-discount', stock: 18 },
-  { id: 8, name: 'Flower 8', price: 5000, originalPrice: 45000, discount: 89, image: '/images/flower-8.jpg', category: 'big-discount', isBestseller: true, stock: 3 },
+  { id: 5, name: 'Flower 5', price: 3000, originalPrice: 60000, discount: 95, image: flowerImages.daisy[0], images: flowerImages.daisy, category: 'big-discount', stock: 5 },
+  { id: 6, name: 'Flower 6', price: 6000, originalPrice: 50000, discount: 88, image: flowerImages.orchid[0], images: flowerImages.orchid, category: 'big-discount', isNew: true, stock: 12 },
+  { id: 7, name: 'Flower 7', price: 8000, originalPrice: 40000, discount: 80, image: flowerImages.peony[0], images: flowerImages.peony, category: 'big-discount', stock: 18 },
+  { id: 8, name: 'Flower 8', price: 5000, originalPrice: 45000, discount: 89, image: flowerImages.lavender[0], images: flowerImages.lavender, category: 'big-discount', isBestseller: true, stock: 3 },
   
   // FLASH SALE Section (45-75% OFF)
-  { id: 9, name: 'Flower 9', price: 15000, originalPrice: 60000, discount: 75, image: '/images/flower-9.jpg', category: 'flash-sale', stock: 10 },
-  { id: 10, name: 'Flower 10', price: 22000, originalPrice: 40000, discount: 45, image: '/images/flower-10.jpg', category: 'flash-sale', isNew: true, stock: 7 },
-  { id: 11, name: 'Flower 11', price: 18000, originalPrice: 55000, discount: 67, image: '/images/flower-11.jpg', category: 'flash-sale', stock: 14 },
-  { id: 12, name: 'Flower 12', price: 12000, originalPrice: 48000, discount: 75, image: '/images/flower-12.jpg', category: 'flash-sale', isBestseller: true, stock: 6 },
+  { id: 9, name: 'Flower 9', price: 15000, originalPrice: 60000, discount: 75, image: flowerImages.rose[1], images: flowerImages.rose, category: 'flash-sale', stock: 10 },
+  { id: 10, name: 'Flower 10', price: 22000, originalPrice: 40000, discount: 45, image: flowerImages.tulip[1], images: flowerImages.tulip, category: 'flash-sale', isNew: true, stock: 7 },
+  { id: 11, name: 'Flower 11', price: 18000, originalPrice: 55000, discount: 67, image: flowerImages.lily[1], images: flowerImages.lily, category: 'flash-sale', stock: 14 },
+  { id: 12, name: 'Flower 12', price: 12000, originalPrice: 48000, discount: 75, image: flowerImages.sunflower[1], images: flowerImages.sunflower, category: 'flash-sale', isBestseller: true, stock: 6 },
   
   // RECOMMENDATION Section
-  { id: 13, name: 'Rose Bouquet', price: 45000, image: '/images/rose-bouquet.jpg', category: 'recommendation', isBestseller: true, stock: 20 },
-  { id: 14, name: 'Tulip Collection', price: 38000, image: '/images/tulip.jpg', category: 'recommendation', isNew: true, stock: 15 },
-  { id: 15, name: 'Lily Arrangement', price: 52000, image: '/images/lily.jpg', category: 'recommendation', stock: 12 },
-  { id: 16, name: 'Mixed Flowers', price: 35000, image: '/images/mixed.jpg', category: 'recommendation', stock: 25 },
+  { id: 13, name: 'Rose Bouquet', price: 45000, image: flowerImages.rose[2], images: flowerImages.rose, category: 'recommendation', isBestseller: true, stock: 20 },
+  { id: 14, name: 'Tulip Collection', price: 38000, image: flowerImages.tulip[2], images: flowerImages.tulip, category: 'recommendation', isNew: true, stock: 15 },
+  { id: 15, name: 'Lily Arrangement', price: 52000, image: flowerImages.lily[2], images: flowerImages.lily, category: 'recommendation', stock: 12 },
+  { id: 16, name: 'Mixed Flowers', price: 35000, image: flowerImages.peony[2], images: flowerImages.peony, category: 'recommendation', stock: 25 },
 ];
 
 // ==================== FORMAT HELPERS ====================
@@ -166,7 +211,7 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
           {/* Quick View */}
           <button
             onClick={() => onQuickView(product)}
-            className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#E85A4F] hover:text-white transition-colors shadow-lg transform hover:scale-110"
+            className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#E85A4F] hover:text-white transition-colors shadow-lg transform hover:scale-110 cursor-pointer"
             title="Quick View"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,7 +223,7 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
           {/* Wishlist */}
           <button
             onClick={handleWishlist}
-            className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg transform hover:scale-110 ${
+            className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg transform hover:scale-110 cursor-pointer ${
               isWishlisted ? 'bg-[#E85A4F] text-white' : 'bg-white hover:bg-[#E85A4F] hover:text-white'
             }`}
             title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
@@ -248,8 +293,8 @@ const ProductCard = ({ product, onAddToCart, onQuickView, onWishlist }: ProductC
             isOutOfStock 
               ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
               : showAddedFeedback
-                ? 'bg-[#4CAF50] text-white'
-                : 'bg-[#282C2F] text-white hover:bg-[#E85A4F] active:scale-95'
+                ? 'bg-[#4CAF50] text-white cursor-pointer'
+                : 'bg-[#282C2F] text-white hover:bg-[#E85A4F] active:scale-95 cursor-pointer'
           }`}
         >
           {isAddingToCart ? (
@@ -291,12 +336,14 @@ interface QuickViewModalProps {
 
 const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModalProps) => {
   const [quantity, setQuantity] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(0);
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       setQuantity(1);
+      setSelectedImage(0);
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -321,34 +368,80 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
 
   if (!isOpen || !product) return null;
 
+  const images = product.images || [product.image];
+
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn cursor-pointer"
       onClick={handleBackdropClick}
     >
       <div 
         ref={modalRef}
-        className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-slideUp"
+        className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-slideUp cursor-default"
       >
         <div className="flex flex-col md:flex-row">
-          {/* Image */}
-          <div className="md:w-1/2 aspect-square bg-[#F5F1ED]">
-            <img 
-              src={product.image} 
-              alt={product.name}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = `https://placehold.co/600x600/F5F1ED/282C2F?text=${encodeURIComponent(product.name)}`;
-              }}
-            />
+          {/* Image Gallery */}
+          <div className="md:w-1/2 bg-[#F5F1ED]">
+            {/* Main Image */}
+            <div className="aspect-square relative overflow-hidden">
+              <img 
+                src={images[selectedImage]} 
+                alt={product.name}
+                className="w-full h-full object-cover transition-all duration-300"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = `https://placehold.co/600x600/F5F1ED/282C2F?text=${encodeURIComponent(product.name)}`;
+                }}
+              />
+              {/* Navigation Arrows */}
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setSelectedImage(prev => prev === 0 ? images.length - 1 : prev - 1)}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg cursor-pointer"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setSelectedImage(prev => prev === images.length - 1 ? 0 : prev + 1)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-lg cursor-pointer"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
+            {/* Thumbnail Gallery */}
+            {images.length > 1 && (
+              <div className="flex gap-2 p-3 justify-center">
+                {images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImage(idx)}
+                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                      selectedImage === idx ? 'border-[#E85A4F] scale-105' : 'border-transparent opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`${product.name} ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           
           {/* Info */}
           <div className="md:w-1/2 p-6 md:p-8 flex flex-col">
             <button 
               onClick={onClose}
-              className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-lg"
+              className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-lg cursor-pointer"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -409,7 +502,7 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
               <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
                 <button 
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                  className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                  className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors cursor-pointer"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
@@ -421,7 +514,7 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
                 <button 
                   onClick={() => setQuantity(q => Math.min(product.stock, q + 1))}
                   disabled={quantity >= product.stock}
-                  className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50"
+                  className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -437,7 +530,7 @@ const QuickViewModal = ({ product, isOpen, onClose, onAddToCart }: QuickViewModa
                 onClose();
               }}
               disabled={product.stock <= 0}
-              className="w-full py-4 bg-[#282C2F] text-white rounded-lg font-semibold hover:bg-[#E85A4F] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-4 bg-[#282C2F] text-white rounded-lg font-semibold hover:bg-[#E85A4F] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -501,7 +594,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
           </h2>
           <button 
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors"
+            className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -537,7 +630,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
                     <div className="flex items-center gap-2">
                       <button 
                         onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-                        className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-white transition-colors"
+                        className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-white transition-colors cursor-pointer"
                       >
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
@@ -546,7 +639,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
                       <span className="w-8 text-center font-medium">{item.quantity}</span>
                       <button 
                         onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                        className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-white transition-colors"
+                        className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-white transition-colors cursor-pointer"
                       >
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -556,7 +649,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
                   </div>
                   <button 
                     onClick={() => onRemove(item.id)}
-                    className="text-gray-400 hover:text-[#E85A4F] transition-colors"
+                    className="text-gray-400 hover:text-[#E85A4F] transition-colors cursor-pointer"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -575,7 +668,7 @@ const CartDrawer = ({ isOpen, onClose, cart, onUpdateQuantity, onRemove }: CartD
               <span className="text-gray-600">Subtotal:</span>
               <span className="text-xl font-bold text-[#282C2F]">{formatPrice(total)}</span>
             </div>
-            <button className="w-full py-4 bg-[#E85A4F] text-white rounded-lg font-semibold hover:bg-[#d14a3f] transition-colors">
+            <button className="w-full py-4 bg-[#E85A4F] text-white rounded-lg font-semibold hover:bg-[#d14a3f] transition-colors cursor-pointer">
               Proceed to Checkout
             </button>
           </div>
@@ -710,7 +803,7 @@ const ShopPage = () => {
             </p>
             <Link 
               to="#products" 
-              className="inline-flex items-center gap-2 bg-[#E85A4F] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#E85A4F] transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 bg-[#E85A4F] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#E85A4F] transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
             >
               Shop Now
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -724,7 +817,7 @@ const ShopPage = () => {
       {/* Floating Cart Button */}
       <button 
         onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-6 left-6 z-30 w-16 h-16 bg-[#E85A4F] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center"
+        className="fixed bottom-6 left-6 z-30 w-16 h-16 bg-[#E85A4F] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center cursor-pointer"
       >
         <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -744,7 +837,7 @@ const ShopPage = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer ${
                   activeCategory === cat.id
                     ? 'bg-[#E85A4F] text-white shadow-lg'
                     : 'bg-[#F5F1ED] text-[#282C2F] hover:bg-[#282C2F] hover:text-white'
@@ -769,7 +862,7 @@ const ShopPage = () => {
                 </h2>
                 <button 
                   onClick={() => setActiveCategory('promo')}
-                  className="text-[#E85A4F] font-medium hover:underline"
+                  className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
                 >
                   View All →
                 </button>
@@ -800,7 +893,7 @@ const ShopPage = () => {
                 </div>
                 <button 
                   onClick={() => setActiveCategory('big-discount')}
-                  className="text-[#E85A4F] font-medium hover:underline"
+                  className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
                 >
                   View All →
                 </button>
@@ -860,7 +953,7 @@ const ShopPage = () => {
                 </div>
                 <button 
                   onClick={() => setActiveCategory('recommendation')}
-                  className="text-[#E85A4F] font-medium hover:underline"
+                  className="text-[#E85A4F] font-medium hover:underline cursor-pointer"
                 >
                   View All →
                 </button>
@@ -933,7 +1026,7 @@ const ShopPage = () => {
               />
               <button 
                 type="submit"
-                className="px-8 py-4 bg-[#282C2F] text-white rounded-full font-semibold hover:bg-white hover:text-[#282C2F] transition-colors"
+                className="px-8 py-4 bg-[#282C2F] text-white rounded-full font-semibold hover:bg-white hover:text-[#282C2F] transition-colors cursor-pointer"
               >
                 Subscribe
               </button>

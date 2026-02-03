@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
         <div className="container-fluid py-3 md:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="/" className="flex-shrink-0">
+            <a href="/" className="flex-shrink-0 cursor-pointer">
               <img 
                 src="/images/logo.svg" 
                 alt="Flower Lab" 
@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="font-['Lato'] font-medium text-[13px] text-[#282C2F] tracking-wide hover:opacity-70 transition-opacity"
+                  className="font-['Lato'] font-medium text-[13px] text-[#282C2F] tracking-wide hover:opacity-70 transition-opacity cursor-pointer"
                 >
                   {item.label}
                 </a>
@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
               
               {/* Mobile Menu Button */}
               <button
-                className="lg:hidden p-2"
+                className="lg:hidden p-2 cursor-pointer"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
               >
@@ -100,7 +100,7 @@ export const Header: React.FC = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="block py-3 font-['Lato'] font-medium text-sm text-[#282C2F] tracking-wide border-b border-gray-100 last:border-0"
+                  className="block py-3 font-['Lato'] font-medium text-sm text-[#282C2F] tracking-wide border-b border-gray-100 last:border-0 cursor-pointer"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
